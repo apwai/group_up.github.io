@@ -1,4 +1,4 @@
-.events {
+.eventsButton {
     font-size: 30px;
      height: 200px;
      width: 300px;
@@ -8,3 +8,45 @@
      -webkit-border-radius: 10px;
      margin:10px;
  }
+
+ {box-sizing: border-box;}
+
+/* The popup form - hidden by default */
+.event-popup {
+  display: none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:400px;  /* adjust as per your needs */
+  height:400px;   /* adjust as per your needs */
+  margin-left:-200px;   /* negative half of width above */
+  margin-top:-200px;   /* negative half of height above */
+  background-color: coral;
+  border-color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Add styles to the form container */
+.event-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Set a style for the submit/login button */
+.event-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.event-container .cancel {
+  background-color: red;
+}
