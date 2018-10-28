@@ -1,0 +1,10 @@
+.events {
+    font-size: 30px;
+     height: 200px;
+     width: 300px;
+     padding: 10px;
+     border-radius: 10px;
+     -moz-border-radius: 10px;
+     -webkit-border-radius: 10px;
+     margin:10px;
+ }
