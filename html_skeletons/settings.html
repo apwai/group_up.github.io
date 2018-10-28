@@ -1,0 +1,26 @@
+<html>
+
+    <title>Settings Page</title>
+    <body>
+        <center>
+            <h1>Account Settings</h1>
+            <form action="./homepage.html">
+                First Name: <input type="text" placeholder = "Bob" required><br>
+                Last Name: <input type="text" placeholder = "Chen" required><br>
+                Username: <input type="text" placeholder = "bchen" required><br>
+                Password: <input type="text" placeholder = "********" required><br>
+                Confirm Password: <input type="text" required><br>
+                Facebook URL: <input type="text" placeholder = "facebook.com/bobchen"><br>
+                Image: <input type="file" name="pic" accept="image/*"> <br>
+                <h6>List some of the activities you are interested in:</h6>
+                <textarea placeholder= "basketball, boxing, tennis." name="myinfo" cols="40" rows="5"></textarea> <br>
+                <input type="submit" value="Update">
+            </form>
+            <button onclick = "window.location.href = './login.html'"> Deactivate Account </button>
+            <button onclick = "window.location.href = './login.html'"> Logout </button>
+            <br />
+            <a href = "./homepage.html"> Back to homepage </a>
+        </center>
+
+    </body>
+</html>

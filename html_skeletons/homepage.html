@@ -1,55 +1,55 @@
-<head>
-  <title>Home Page</title>
-  <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-  <script>
-    function openEvent() {
-      document.getElementById("myEvent").style.display = "block";
-    }
+<html>
+  <head>
+    <title>Home Page</title>
+    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+    <script>
+      function openEvent() {
+        document.getElementById("myEvent").style.display = "block";
+      }
 
-    function closeEvent() {
-      document.getElementById("myEvent").style.display = "none";
-    }
-  </script>
-</head>
-<body>
-  <center>
-    <h1> Website Homepage </h1>
-    <button onclick = "window.location.href = './profile.html'"> My Profile </button>
-    <button onclick = "window.location.href = './myposts.html'"> My Post </button>
-    <button onclick = "window.location.href = './settings.html'"> Settings </button>
+      function closeEvent() {
+        document.getElementById("myEvent").style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1> Website Homepage </h1>
+      <button onclick = "window.location.href = './profile.html'"> My Profile </button>
+      <button onclick = "window.location.href = './myposts.html'"> My Post </button>
+      <button onclick = "window.location.href = './settings.html'"> Settings </button>
 
-    <button onclick = "window.location.href = './newpost.html'"> Create Event </button>
-    <button onclick = "window.location.href = './messages.html'"> Messages </button>
+      <button onclick = "window.location.href = './newpost.html'"> Create Event </button>
+      <button onclick = "window.location.href = './messages.html'"> Messages </button>
 
-    <table>
-      <tr>
-        <td>
-          <div class="event-popup" id="myEvent">
-            <center>
-              Basketball <br />
-              7:00pm - 9:00pm <br />
-              Main Gymnasium <br />
-              9500 Gilman Dr.<br />
-              La Jolla, CA 92093<br />
-              Number of People: 10<br />
-              Number of Peopled Joined: 10<br />
-              Hi, I am looking for people to play <br />
-              a friendly game of basketball with. <br />
+      <table>
+        <tr>
+          <td>
+            <div class="event-popup" id="myEvent">
+              <center>
+                Basketball <br />
+                7:00pm - 9:00pm <br />
+                Main Gymnasium <br />
+                9500 Gilman Dr.<br />
+                La Jolla, CA 92093<br />
+                Number of People: 10<br />
+                Number of Peopled Joined: 10<br />
+                Hi, I am looking for people to play <br />
+                a friendly game of basketball with. <br />
 
-              <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-              <button type="submit" class="btn">Unjoin Event</button>
-              <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-            </center>
-          </div>
-          <button class = "eventsButton" onclick = "openEvent()">
-            Basketball<br/>
-            Main Gym <br/>
-            10/31/18 7pm <br/>
-          </button>
-        </td>
-      </tr>
-    </table>
-
-
-  </center>
-</body>
+                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
+                <button type="submit" class="btn">Unjoin Event</button>
+                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
+              </center>
+            </div>
+            <button class = "eventsButton" onclick = "openEvent()">
+              Basketball<br/>
+              Main Gym <br/>
+              10/31/18 7pm <br/>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
