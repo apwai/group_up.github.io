@@ -1,20 +1,109 @@
 <html>
 
     <title>Create Events Page</title>
+    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
     <body>
-        <center>
-            <h1>Create Event</h1>
+      <!--  for the side menu -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="./profile.html">My Profile</a>
+        <a href="./myposts.html">My Posts</a>
+        <a href="./settings.html">Settings</a>
+      </div>
+
+
+      <div class="topnav">
+
+          <div class="search-container">
+
+              <form>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                <input type="text" placeholder="Search..." name="search" size="85">
+                <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
+                <button formaction = "./newpost.html" value="else"> Create Event </button>
+                <button formaction = "./messages.html" value="else"> Messages </button>
+                <button formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button>
+              </form>
+
+
+          </div>
+      </div>
+      <center>
+        <div class = "container">
             <form action="./homepage.html">
-                Name of Event: <input type = "text" required> <br>
-                Time Start: <input type = "text" required> <br>
-                Time End: <input type = "text" required> <br>
-                Location: <input type = "text" required> <br>
-                Number of People: <input type = "text" required> <br>
-                <h6>Description/Addition Information:</h6>
-                <textarea name="myinfo" cols="40" rows="5"></textarea> <br>
-                <input type="submit" value="Create Event">
-                <button onclick = "window.location.href = './homepage.html'"> Cancel </button>
+
+                <div class="row">
+                  <div class = "col-25">
+                    <label for = "actName">Activity Name </label>
+                  </div>
+                  <div class = "col-75">
+                     <input type = "text" id = "actName"
+                            name = "activityname" required> <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class = "col-25">
+                    <label for = "startTime">Start Date and Time </label>
+                  </div>
+                  <div class = "col-75">
+                     <input type = "text" id = "startTime"
+                            name = "startDateTime" required> <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class = "col-25">
+                    <label for = "endTime">End Date and Time </label>
+                  </div>
+                  <div class = "col-75">
+                     <input type = "text" id = "endTime"
+                            name = "endDateTime" required> <br>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class = "col-25">
+                    <label for = "address">Location Address </label>
+                  </div>
+                  <div class = "col-75">
+                     <input type = "text" id = "address"
+                            name = "locationAddress" required> <br>
+                  </div>
+                </div>
+                <div>
+                  <div class="row">
+                    <div class = "col-25">
+                      <label for = "numPeople">Number of People </label>
+                    </div>
+                    <div class = "col-75">
+                       <input type = "text" id = "numPeople"
+                              name = "numPeople" required> <br>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-25">
+                        <label for="description">Description/Addition Information</label>
+                      </div>
+                      <div class="col-75">
+                        <textarea id="description" name="description"  style="height:200px"></textarea>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <input class = "submit" type="submit" value="Create Event">
+                      <input class = "cancel" type="button" value="Cancel" onclick="window.location = './homepage.html'">
+                    </div>
+              </div>
             </form>
+          </div>
             <br />
         </center>
 
