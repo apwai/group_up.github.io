@@ -10,14 +10,33 @@
       function closeEvent() {
         document.getElementById("myEvent").style.display = "none";
       }
+        
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
     </script>
   </head>
   <body>
+
+    <!--  for the side menu -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="./profile.html">My Profile</a>
+      <a href="./myposts.html">My Posts</a>
+      <a href="./settings.html">Settings</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+      
     <center>
       <h1> Website Homepage </h1>
-      <button onclick = "window.location.href = './profile.html'"> My Profile </button>
-      <button onclick = "window.location.href = './myposts.html'"> My Post </button>
-      <button onclick = "window.location.href = './settings.html'"> Settings </button>
+      <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
+      <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
+      <button onclick = "window.location.href = './settings.html'"> Settings </button>-->
 
       <button onclick = "window.location.href = './newpost.html'"> Create Event </button>
       <button onclick = "window.location.href = './messages.html'"> Messages </button>
