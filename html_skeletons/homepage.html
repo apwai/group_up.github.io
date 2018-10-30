@@ -1,7 +1,8 @@
 <html>
   <head>
-    <title>Home Page</title>
+    <title>App Name</title>
     <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
       function openEvent() {
         document.getElementById("myEvent").style.display = "block";
@@ -21,6 +22,7 @@
     </script>
   </head>
   <body>
+      
 
     <!--  for the side menu -->
     <div id="mySidenav" class="sidenav">
@@ -30,16 +32,29 @@
       <a href="./settings.html">Settings</a>
     </div>
 
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-      
+
+    <div class="topnav">
+
+        <div class="search-container">
+
+            <form>
+              <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+              <input type="text" placeholder="Search..." name="search" size="85">
+              <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
+              <button formaction = "./newpost.html" value="else"> Create Event </button>
+              <button formaction = "./messages.html" value="else"> Messages </button>
+              <button formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button>
+            </form>
+
+
+        </div>
+    </div>
     <center>
-      <h1> Website Homepage </h1>
       <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
       <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
       <button onclick = "window.location.href = './settings.html'"> Settings </button>-->
 
-      <button onclick = "window.location.href = './newpost.html'"> Create Event </button>
-      <button onclick = "window.location.href = './messages.html'"> Messages </button>
+
 
       <table>
         <tr>
