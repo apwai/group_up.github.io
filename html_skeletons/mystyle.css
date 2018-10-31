@@ -95,6 +95,7 @@
 .topnav {
   overflow: hidden;
   background-color: #99ccff;
+  width: 100%;
 }
 
 .topnav a {
@@ -140,6 +141,7 @@
   cursor: pointer;
   background-color: white;
   color: black;
+  border-radius: 4px;
 }
 
 .topnav .search-container button:hover {
@@ -155,12 +157,18 @@
     float: left;
     width: 25%;
     margin-top: 6px;
+    font-family: "HelveticaNeue";
 }
 
 .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
+
+}
+
+.col-75 input {
+    font-family: "HelveticaNeue";
 }
 
 /* Clear floats after the columns */
@@ -193,6 +201,7 @@
     cursor: pointer;
     float: right;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 .container .cancel {
@@ -204,6 +213,7 @@
     cursor: pointer;
     float: right;
     margin-left: 10px;
+    margin-top: 10px;
 }
 
 .container .submit:hover {
@@ -215,10 +225,14 @@
 
 /* for the filter */
 .custom-select {
-    background: #99ccff;
-    padding-left: 90px;
-    padding-top: 10px; 
+    padding-left: 150px;
+    padding-top: 10px;
     padding-bottom: 15px;
+}
+
+.custom-select label {
+  font-family: "HelveticaNeue";
+  font-size: 16px;
 }
 
 .custom-select select {
