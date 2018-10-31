@@ -60,7 +60,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #80bfff;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -70,7 +70,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
     transition: 0.3s;
 
@@ -87,6 +87,7 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    color: white;
 }
 
 /* search bar */
@@ -147,7 +148,6 @@
 
 .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
     padding: 20px;
 }
 
@@ -185,7 +185,7 @@
 }
 
 .container .submit {
-    background-color: #4CAF50;
+    background-color:  #80bfff;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -196,7 +196,7 @@
 }
 
 .container .cancel {
-    background-color: clear;
+    background-color: #f2f2f2;
     color: black;
     padding: 12px 20px;
     border: none;
@@ -207,7 +207,7 @@
 }
 
 .container .submit:hover {
-    background-color: #45a049;
+    background-color:  #1a8cff;
 }
 .container .cancel:hover {
     background-color: transparent;
