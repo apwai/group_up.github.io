@@ -12,6 +12,21 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
+        
+      function addPost() {
+        var actName = document.getElementById("actName");
+        var startTime = document.getElementById("startTime");
+        var endTime = document.getElementById("endTime");
+        var address = document.getElementById("address");
+        var numPeople = document.getElementById("numPeople");
+        var description = document.getElementById("description");
+
+        var posts = JSON.parse(localStorage.getItem("posts") || "[]");
+        posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value});
+        localStorage.setItem('posts', JSON.stringify(posts));
+    }        
+    
+        
     </script>
     <body>
       <!--  for the side menu -->
@@ -98,7 +113,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <input class = "submit" type="submit" value="Create Event">
+                      <input class = "submit" onclick="addPost()" type="submit" value="Create Event">
                       <input class = "cancel" type="button" value="Cancel" onclick="window.location = './homepage.html'">
                     </div>
               </div>

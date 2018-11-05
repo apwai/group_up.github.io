@@ -4,12 +4,16 @@
     <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-      function openEvent() {
-        document.getElementById("myEvent").style.display = "block";
+        
+      //use this if you want to clear all the data, make sure to comment it out again after one run - VK
+      //localStorage.clear();
+
+      function openEvent(index) {
+        document.getElementById("postNumber" + index).style.display = "block";
       }
 
-      function closeEvent() {
-        document.getElementById("myEvent").style.display = "none";
+      function closeEvent(index) {
+        document.getElementById("postNumber" + index).style.display = "none";
       }
 
       function openNav() {
@@ -19,10 +23,59 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
+        
+      function toProfile() {
+          //we will need to modify this method later when we get more users in the system - VK
+          location.href = './profile.html';
+      }
+        
+      function addNewPost(actName, startDate, endDate, numPeople, address, description) {
+        var table = document.getElementById("posts");
+        var length = 3;
+        if (table.rows.length > 0) {
+            length = table.rows[table.rows.length - 1].childElementCount;
+        }
+        
+        if (length == 3) {
+            table.insertRow(-1);
+            table.insertRow(-1);
+            length = 0;
+        }
+        
+        var allRows = table.getElementsByTagName('tr');
+        var numRows = allRows.length;
+        
+        var cell = allRows[numRows - 1].insertCell(length);
+        
+        var index = parseInt(localStorage.getItem('numPosts'));
+        numPosts = index + 1;
+
+        cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>" + actName + "<br/>" + startDate + "to <br/>" + endDate + "<br/>" + address + "<br/>" + numPeople + "<br/>" + description + "<br/>" + "<button onclick = 'toProfile()'> Bob Chen </button> <button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
+
+
+        cell.width = 225;
+        cell.height = 225;
+          
+        
+        localStorage.setItem('numPosts', numPosts);
+
+      }
+    
+      function populate() {
+        localStorage.setItem('numPosts', 0);
+        posts = JSON.parse(localStorage.getItem("posts") || "[]");
+        posts.forEach(function(post) {
+          addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+        });
+      }
+    
+      function strcmp(a, b) {   
+        return (a<b?-1:(a>b?1:0));  
+      }
+    
     </script>
   </head>
-  <body>
-
+  <body onload="populate()">
 
     <!--  for the side menu -->
     <div id="mySidenav" class="sidenav">
@@ -64,7 +117,15 @@
           </select>
         </label>
       </div>
+      
     <center>
+        <!-- THIS IS WHERE THE POSTS WILL GO - VK -->
+        <table id="posts">
+            <br>
+            <br>
+        </table>
+    </center>
+    <!--<center>
       <table>
         <tr>
           <td>
@@ -363,6 +424,6 @@
           </td>
         </tr>
       </table>
-    </center>
+    </center>-->
   </body>
 </html>
