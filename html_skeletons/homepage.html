@@ -61,6 +61,8 @@
         cell.height = 225;
 
 
+        posts = JSON.parse(localStorage.getItem('posts') || "[]");
+        posts.push({actName: name, startTime: startDate, endTime: endDate, numPeople: numPeople, address: address, description: description});
         localStorage.setItem('numPosts', numPosts);
 
       }
@@ -107,6 +109,33 @@
           }
 
       }
+        
+    
+      function filter(evt) {
+          $('#posts').empty();
+          posts = JSON.parse(localStorage.getItem("posts") || "[]");
+
+          temp_posts = posts
+          
+          if(evt.target.value === "4") {
+              temp_posts = temp_posts.sort(function(a,b) {
+                  return (Number(a.numPeople) > Number(b.numPeople)) ? 1 : ((Number(a.numPeople) < Number(b.numPeople)) ? -1 : 0);
+              });
+              
+          }
+          
+          else if(evt.target.value === "3") {
+              temp_posts = temp_posts.sort(function(a,b) {
+                  return (Number(a.numPeople) < Number(b.numPeople)) ? 1 : ((Number(a.numPeople) > Number(b.numPeople)) ? -1 : 0);
+              });
+              
+          }
+   
+          temp_posts.forEach(function(post) {
+              addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+          });         
+
+      }
 
 
     </script>
@@ -126,7 +155,7 @@
 
         <div class="search-container">
               <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
-              <input type="text" placeholder="Search..." id="search" name="search" size="85">
+              <input type="text" placeholder="Search by...name...location..." id="search" name="search" size="85">
               <button class="btnsearch" onclick="searchResults()" type="submit"><i class="fa fa-search"></i></button>
               <button onclick="location.href='./newpost.html'" > Create Event </button>
               <button onclick="location.href='./messages.html'" > Messages </button>
@@ -141,7 +170,7 @@
 
       <div class="custom-select">
         <label>Sort by:
-          <select>
+          <select onchange="filter(event)">
             <option value="0">Most Recent Posts</option>
             <option value="1">Earliest Start Time</option>
             <option value="2">Latest Start Time</option>
