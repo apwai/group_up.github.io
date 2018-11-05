@@ -6,7 +6,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <script>
-        
+
       //use this if you want to clear all the data, make sure to comment it out again after one run - VK
       //localStorage.clear();
 
@@ -25,32 +25,32 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
-        
+
       function toProfile() {
           //we will need to modify this method later when we get more users in the system - VK
           location.href = './profile.html';
       }
-        
+
       function addNewPost(actName, startDate, endDate, numPeople, address, description) {
-          
+
 
         var table = document.getElementById("posts");
         var length = 3;
         if (table.rows.length > 0) {
             length = table.rows[table.rows.length - 1].childElementCount;
         }
-        
+
         if (length == 3) {
             table.insertRow(-1);
             table.insertRow(-1);
             length = 0;
         }
-        
+
         var allRows = table.getElementsByTagName('tr');
         var numRows = allRows.length;
-        
+
         var cell = allRows[numRows - 1].insertCell(length);
-        
+
         var index = parseInt(localStorage.getItem('numPosts'));
         numPosts = index + 1;
 
@@ -59,43 +59,43 @@
 
         cell.width = 225;
         cell.height = 225;
-          
-        
+
+
         localStorage.setItem('numPosts', numPosts);
 
       }
-    
+
       function populate() {
 
-        $('#posts').empty(); 
+        $('#posts').empty();
         localStorage.setItem('numPosts', 0);
         posts = JSON.parse(localStorage.getItem("posts") || "[]");
         posts.forEach(function(post) {
           addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
         });
       }
-    
-      function strcmp(a, b) {   
-        return (a<b?-1:(a>b?1:0));  
+
+      function strcmp(a, b) {
+        return (a<b?-1:(a>b?1:0));
       }
 
-  
-        
+
+
       function searchResults() {
-          
-          $('#posts').empty(); 
+
+          $('#posts').empty();
           search = document.getElementById("search").value;
           posts = JSON.parse(localStorage.getItem("posts") || "[]");
-          
+
           num = 0;
           posts.forEach(function(post) {
-            
+
             if((post.actName).includes(search)) {
                 addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
                 num++;
             }
           });
-          
+
           if(num == 0) {
             var table = document.getElementById("posts");
             var row = table.insertRow(0);
@@ -107,7 +107,7 @@
           }
 
       }
-        
+
 
     </script>
   </head>
@@ -142,15 +142,16 @@
       <div class="custom-select">
         <label>Sort by:
           <select>
-            <option value="0">Most Recent</option>
-            <option value="1">Oldest</option>
-            <option value="2">Fullest</option>
-            <option value="3">Emptiest</option>
+            <option value="0">Most Recent Posts</option>
+            <option value="1">Earliest Start Time</option>
+            <option value="2">Latest Start Time</option>
+            <option value="3">Fullest</option>
+            <option value="4">Emptiest</option>
           </select>
         </label>
         <button class = "reset" onclick="populate()">Clear Filtering</button>
       </div>
-      
+
     <center>
         <!-- THIS IS WHERE THE POSTS WILL GO - VK -->
         <table id="posts">
