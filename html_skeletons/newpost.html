@@ -1,8 +1,17 @@
 <html>
-
+ <head>
     <title>Create Events Page</title>
     <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/moment-2.4.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <script>
       function openNav() {
@@ -12,7 +21,7 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
-        
+
       function addPost() {
         var actName = document.getElementById("actName");
         var startTime = document.getElementById("startTime");
@@ -24,10 +33,23 @@
         var posts = JSON.parse(localStorage.getItem("posts") || "[]");
         posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value});
         localStorage.setItem('posts', JSON.stringify(posts));
-    }        
-    
-        
+    }
+
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+
     </script>
+  </head>
     <body>
       <!--  for the side menu -->
       <div id="mySidenav" class="sidenav">
@@ -72,8 +94,12 @@
                     <label for = "startTime">Start Date and Time </label>
                   </div>
                   <div class = "col-75">
-                     <input type = "text" id = "startTime"
-                            name = "startDateTime" required> <br>
+                    <div class='input-group date' id='datetimepicker6'>
+                      <input type='text' id = "startTime" class="form-control" />
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                      </div>
                   </div>
                 </div>
                 <div class="row">
@@ -81,8 +107,12 @@
                     <label for = "endTime">End Date and Time </label>
                   </div>
                   <div class = "col-75">
-                     <input type = "text" id = "endTime"
-                            name = "endDateTime" required> <br>
+                    <div class='input-group date' id='datetimepicker7'>
+                      <input type='text' id = "endTime" class="form-control" />
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -100,7 +130,7 @@
                       <label for = "numPeople">Number of People </label>
                     </div>
                     <div class = "col-75">
-                       <input type = "text" id = "numPeople"
+                       <input class = "form-control" type = "number" min = "1" id = "numPeople"
                               name = "numPeople" required> <br>
                     </div>
                   </div>
@@ -121,6 +151,4 @@
           </div>
             <br />
         </center>
-
-    </body>
 </html>
