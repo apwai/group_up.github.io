@@ -30,9 +30,15 @@
         var numPeople = document.getElementById("numPeople");
         var description = document.getElementById("description");
 
-        var posts = JSON.parse(localStorage.getItem("posts") || "[]");
-        posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value});
-        localStorage.setItem('posts', JSON.stringify(posts));
+        if (actName.value !== null && actName.value !== ""
+            && startTime.value !== null && startTime.value !== ""
+            && endTime.value !== null && endTime.value !== ""
+            && address.value !== null && address.value !== ""
+            && numPeople.value !== null && numPeople.value !== "") {
+          var posts = JSON.parse(localStorage.getItem("posts") || "[]");
+          posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value});
+          localStorage.setItem('posts', JSON.stringify(posts));
+      }
     }
 
     $(function () {
@@ -66,11 +72,11 @@
 
               <form>
                 <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
-                <input type="text" placeholder="Search..." name="search" size="85">
+                <input type="text" placeholder="Search..." name="search">
                 <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
                 <button formaction = "./newpost.html" value="else"> Create Event </button>
                 <button formaction = "./messages.html" value="else"> Messages </button>
-                <button formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button>
+                <button class="btnhome" formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button>
               </form>
 
 
@@ -95,7 +101,7 @@
                   </div>
                   <div class = "col-75">
                     <div class='input-group date' id='datetimepicker6'>
-                      <input type='text' id = "startTime" class="form-control" />
+                      <input type='text' id = "startTime" class="form-control" required/>
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -108,7 +114,7 @@
                   </div>
                   <div class = "col-75">
                     <div class='input-group date' id='datetimepicker7'>
-                      <input type='text' id = "endTime" class="form-control" />
+                      <input type='text' id = "endTime" class="form-control" required/>
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-calendar"></span>
                         </span>
@@ -120,7 +126,7 @@
                     <label for = "address">Location Address </label>
                   </div>
                   <div class = "col-75">
-                     <input type = "text" id = "address"
+                    <input type = "text" id = "address"
                             name = "locationAddress" required> <br>
                   </div>
                 </div>

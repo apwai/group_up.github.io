@@ -39,7 +39,7 @@
   background-color: white;
   color: black;
   border-radius: 4px;
-  
+
 }
 
 /* Add styles to the form container */
@@ -140,11 +140,13 @@
 }
 
 .topnav input[type=text] {
+  width: 62%;
   padding: 6px;
   margin-top: 8px;
   margin-left: 50px;
   font-size: 17px;
   border: none;
+  border-radius: 4px;
 }
 
 .topnav .search-container button {
@@ -272,4 +274,14 @@
 
 .custom-select .reset:hover {
     background-color: #80bfff;
+}
+
+.btnsearch {
+  width: 34.5;
+  height: 34.5;
+}
+
+.btnhome {
+  width: 34.5;
+  height: 34.5;
 }

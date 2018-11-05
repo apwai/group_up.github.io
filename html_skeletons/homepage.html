@@ -2,8 +2,10 @@
   <head>
     <title>App Name</title>
     <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <script>
 
@@ -54,7 +56,14 @@
         var index = parseInt(localStorage.getItem('numPosts'));
         numPosts = index + 1;
 
-        cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>" + actName + "<br/>" + startDate + "to <br/>" + endDate + "<br/>" + address + "<br/>" + numPeople + "<br/>" + description + "<br/>" + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
+        cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
+        + actName + "<br/>"
+        + startDate + " to <br/>"
+        + endDate + "<br/>"
+        + address + "<br/>"
+        + numPeople + "<br/>"
+        + description + "<br/>"
+        + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
 
 
         cell.width = 225;
@@ -109,34 +118,33 @@
           }
 
       }
-        
-    
+
+
       function filter(evt) {
           $('#posts').empty();
           posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
           temp_posts = posts
-          
+
           if(evt.target.value === "4") {
               temp_posts = temp_posts.sort(function(a,b) {
                   return (Number(a.numPeople) > Number(b.numPeople)) ? 1 : ((Number(a.numPeople) < Number(b.numPeople)) ? -1 : 0);
               });
-              
+
           }
-          
+
           else if(evt.target.value === "3") {
               temp_posts = temp_posts.sort(function(a,b) {
                   return (Number(a.numPeople) < Number(b.numPeople)) ? 1 : ((Number(a.numPeople) > Number(b.numPeople)) ? -1 : 0);
               });
-              
+
           }
-   
+
           temp_posts.forEach(function(post) {
               addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
-          });         
+          });
 
       }
-
 
     </script>
   </head>
@@ -154,16 +162,17 @@
     <div class="topnav">
 
         <div class="search-container">
+            <form id = "searchForm" onsubmit = "return false;">
               <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
-              <input type="text" placeholder="Search by...name...location..." id="search" name="search" size="85">
+              <input type="text" placeholder="Search by...name...location..." id="search" name="search" >
               <button class="btnsearch" onclick="searchResults()" type="submit"><i class="fa fa-search"></i></button>
               <button onclick="location.href='./newpost.html'" > Create Event </button>
               <button onclick="location.href='./messages.html'" > Messages </button>
-              <button onclick="location.href='./homepage.html'" ><i class="fa fa-home"></i></button>
-
+              <button class="btnhome" onclick="location.href='./homepage.html'" ><i class="fa fa-home"></i></button>
+            </form>
         </div>
     </div>
-
+    
       <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
       <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
       <button onclick = "window.location.href = './settings.html'"> Settings </button>-->
@@ -178,7 +187,7 @@
             <option value="4">Emptiest</option>
           </select>
         </label>
-        <button class = "reset" onclick="populate()">Clear Filtering</button>
+        <button class = "reset" onclick = "window.location.href = './homepage.html'">Clear Filtering</button>
       </div>
 
     <center>
@@ -188,305 +197,5 @@
             <br>
         </table>
     </center>
-    <!--<center>
-      <table>
-        <tr>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-          <td>
-            <div class="event-popup" id="myEvent">
-              <center>
-                Basketball <br />
-                7:00pm - 9:00pm <br />
-                Main Gymnasium <br />
-                9500 Gilman Dr.<br />
-                La Jolla, CA 92093<br />
-                Number of People: 10<br />
-                Number of Peopled Joined: 10<br />
-                Hi, I am looking for people to play <br />
-                a friendly game of basketball with. <br />
-
-                <button onclick = "window.location.href = './profile.html'"> Bob Chen </button>
-                <button type="submit" class="btn">Unjoin Event</button>
-                <button type="submit" class="btn cancel" onclick="closeEvent()">Close</button>
-              </center>
-            </div>
-            <button class = "eventsButton" onclick = "openEvent()">
-              Basketball<br/>
-              Main Gym <br/>
-              10/31/18 7pm <br/>
-            </button>
-          </td>
-        </tr>
-      </table>
-    </center>-->
   </body>
 </html>
