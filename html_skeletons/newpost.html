@@ -29,6 +29,7 @@
         var address = document.getElementById("address");
         var numPeople = document.getElementById("numPeople");
         var description = document.getElementById("description");
+        var creator = localStorage.getItem('currUser');
 
         if (actName.value !== null && actName.value !== ""
             && startTime.value !== null && startTime.value !== ""
@@ -36,7 +37,7 @@
             && address.value !== null && address.value !== ""
             && numPeople.value !== null && numPeople.value !== "") {
           var posts = JSON.parse(localStorage.getItem("posts") || "[]");
-          posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value});
+          posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value, creator: creator});
           localStorage.setItem('posts', JSON.stringify(posts));
       }
     }
