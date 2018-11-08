@@ -22,13 +22,13 @@ var Account= [
 //FAKE  database for events
 
 var fakePosts = [
-  {'actName': 'Drawing', 'startTime': 'Nov 3rd 2018 4PM', 'endTime': 'Nov 23rd 2018 7PM', 'address': '123 Blue St', 'numPeople': '14', 'description': 'MasterClasses are 3-hour painting workshops that focus on an artist or technique using Right-brain painting techniques. Each MasterClass begins with an information slideshow and lecture before artists move onto painting. Dance to music and create fun pieces that you’ll want to hang in your house.', 'creator': 'fakeUser'},
-  {'actName': 'Beginner Yoga', 'startTime': 'Nov 20th 2018 3PM', 'endDate': 'Nov 30th 2018 5PM', 'address': '123 Green St', 'numPeople': '6', 'description': 'This class is designed for first time yogis. It is the right class for you if you want to learn the fundamentals of yoga in a group where everyone is new. The teacher will give you some background on yoga while you are seated, but come prepared to move. You’ll walk out feeling embodied, empowered, energized, and eager to come back.', 'creator': 'fakeUser'},
-  {'actName': 'Wine and Dine', 'startTime': 'Oct 3rd 2018', 'endTime': 'Oct 23rd 2018', 'address': '1245 Lebon Drive', 'numPeople': '6', 'description': 'a fun class', 'creator': 'fakeUser'},
-  {'actName': 'Basketball Tournament', 'startTime': 'Oct 3rd 2018', 'endTime': 'Oct 23rd 2018', 'address': '3458 Rock St', 'numbPeople': '6', 'description': 'a great class', 'creator': 'fakeUser'},
-  {'actName': 'Boxing Class', 'startTime': 'Dec 3rd 2018', 'endTime': 'Dec 23rd 2018', 'address': 'Boxing Club', 'numPeople': '6', 'description': 'very fun', 'creator': 'fakeUser'},
-  {'actName': 'Basketball 5 on 5', 'startTime': 'Oct 3rd 2018', 'endTime': 'Oct 23rd 2018', 'address': 'Amazon Park', 'numPeople': '6', 'description': 'great', 'creator': 'fakeUser'},
-  {'actName': 'Gymming Kids', 'startTime': 'Nov 14th 2018', 'endTime': 'Nov 20th 2018', 'address': 'RIMAC', 'numPeople': '6', 'description': 'nice', 'creator': 'fakeUser'}
+  {'actName': 'Drawing', 'startTime': '12/11/2018 4:00PM', 'endTime': '12/11/2018 7:00PM', 'address': '123 Blue St', 'numPeople': '14', 'description': 'MasterClasses are 3-hour painting workshops that focus on an artist or technique using Right-brain painting techniques.', 'creator': 'fakeUser'},
+  {'actName': 'Beginner Yoga', 'startTime': '11/12/2018 7:00AM', 'endTime': '11/12/2018 9:00AM', 'address': '452 Green St', 'numPeople': '6', 'description': 'This class is designed for first time yogis. It is the right class for you if you want to learn the fundamentals of yoga in a group where everyone is new. The teacher will give you some background on yoga while you are seated, but come prepared to move. You’ll walk out feeling embodied, empowered, energized, and eager to come back.', 'creator': 'fakeUser'},
+  {'actName': 'Wine and Dine', 'startTime': '11/10/2018 6:00PM', 'endTime': '11/10/2018 9:00PM', 'address': '1245 Lebon Drive', 'numPeople': '8', 'description': 'a fun class to draw and drink wine', 'creator': 'fakeUser'},
+  {'actName': 'Basketball Tournament', 'startTime': '11/14/2018 9:00AM', 'endTime': '11/14/2018 3:00PM', 'address': '3458 Rock St', 'numPeople': '6', 'description': 'a great class to work', 'creator': 'fakeUser'},
+  {'actName': 'Boxing Class', 'startTime': '12/03/2018 11:20AM', 'endTime': '12/03/2018 2:00PM', 'address': 'Boxing Club', 'numPeople': '10', 'description': 'A boxing class made for beginners and taught by professionals.', 'creator': 'fakeUser'},
+  {'actName': 'Basketball 5 on 5', 'startTime': '10/23/2018 5:00PM', 'endTime': '10/23/2018 8:00PM', 'address': 'Amazon Park', 'numPeople': '11', 'description': 'great', 'creator': 'fakeUser'},
+  {'actName': 'Gymming Kids', 'startTime': '11/14/2018 2:30PM', 'endTime': '11/14/2018 3:30PM', 'address': 'RIMAC', 'numPeople': '20', 'description': 'Gymming Session.', 'creator': 'fakeUser'}
 ]
 
 //Call this function when page loads
