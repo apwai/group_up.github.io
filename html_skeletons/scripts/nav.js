@@ -6,6 +6,13 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
+function openEvent(index) {
+    document.getElementById("postNumber" + index).style.display = "block";
+}
+
+function closeEvent(index) {
+    document.getElementById("postNumber" + index).style.display = "none";
+}
 
 function toProfile() {
   //we will need to modify this method later when we get more users in the system - VK
@@ -15,43 +22,43 @@ function toProfile() {
 function addNewPost(actName, startDate, endDate, numPeople, address, description) {
 
 
-var table = document.getElementById("posts");
-var length = 3;
-if (table.rows.length > 0) {
-    length = table.rows[table.rows.length - 1].childElementCount;
-}
+    var table = document.getElementById("posts");
+    var length = 3;
+    if (table.rows.length > 0) {
+        length = table.rows[table.rows.length - 1].childElementCount;
+    }
 
-if (length == 3) {
-    table.insertRow(-1);
-    table.insertRow(-1);
-    length = 0;
-}
+    if (length == 3) {
+        table.insertRow(-1);
+        table.insertRow(-1);
+        length = 0;
+    }
 
-var allRows = table.getElementsByTagName('tr');
-var numRows = allRows.length;
+    var allRows = table.getElementsByTagName('tr');
+    var numRows = allRows.length;
 
-var cell = allRows[numRows - 1].insertCell(length);
+    var cell = allRows[numRows - 1].insertCell(length);
 
-var index = parseInt(localStorage.getItem('numPosts'));
-numPosts = index + 1;
+    var index = parseInt(localStorage.getItem('numPosts'));
+    numPosts = index + 1;
 
-cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
-+ actName + "<br/>"
-+ startDate + " to <br/>"
-+ endDate + "<br/>"
-+ address + "<br/>"
-+ numPeople + "<br/>"
-+ description + "<br/>"
-+ "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
-
-
-cell.width = 225;
-cell.height = 225;
+    cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
+    + actName + "<br/>"
+    + startDate + " to <br/>"
+    + endDate + "<br/>"
+    + address + "<br/>"
+    + numPeople + "<br/>"
+    + description + "<br/>"
+    + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
 
 
-posts = JSON.parse(localStorage.getItem('posts') || "[]");
-posts.push({actName: name, startTime: startDate, endTime: endDate, numPeople: numPeople, address: address, description: description});
-localStorage.setItem('numPosts', numPosts);
+    cell.width = 225;
+    cell.height = 225;
+
+
+    posts = JSON.parse(localStorage.getItem('posts') || "[]");
+    posts.push({actName: name, startTime: startDate, endTime: endDate, numPeople: numPeople, address: address, description: description});
+    localStorage.setItem('numPosts', numPosts);
 
 }
 
@@ -73,7 +80,7 @@ function populate() {
 }
 
 function strcmp(a, b) {
-return (a<b?-1:(a>b?1:0));
+    return (a<b?-1:(a>b?1:0));
 }
 
 
