@@ -127,7 +127,7 @@
           num = 0;
           posts.forEach(function(post) {
 
-            if((post.actName).includes(search)) {
+            if((post.actName.toLowerCase()).includes(search.toLowerCase())) {
                 addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
                 num++;
             }
