@@ -29,7 +29,7 @@ var fakePosts = [
   {'actName': 'Boxing Class', 'startTime': '12/03/2018 11:20AM', 'endTime': '12/03/2018 2:00PM', 'address': 'Boxing Club', 'numPeople': '10', 'description': 'A boxing class made for beginners and taught by professionals.', 'creator': 'fakeUser'},
   {'actName': 'Basketball 5 on 5', 'startTime': '10/23/2018 5:00PM', 'endTime': '10/23/2018 8:00PM', 'address': 'Amazon Park', 'numPeople': '11', 'description': 'great', 'creator': 'fakeUser'},
   {'actName': 'Gymming Kids', 'startTime': '11/14/2018 2:30PM', 'endTime': '11/14/2018 3:30PM', 'address': 'RIMAC', 'numPeople': '20', 'description': 'Gymming Session.', 'creator': 'fakeUser'}
-]
+];
 
 //Call this function when page loads
 $(document).ready(function() {

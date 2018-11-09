@@ -88,13 +88,22 @@
           
         //for adding dummy posts
         localStorage.setItem('numPosts', 0);
-        posts = JSON.parse(localStorage.getItem("posts") || "[]");
-        
-        fakePosts.forEach(function(fakePost) {
-            posts.push(fakePost);
-        });
           
-        localStorage.setItem('posts', JSON.stringify(posts));
+        var bool = localStorage.getItem('firstTime');
+          
+        if(bool == "true") {
+            posts = JSON.parse(localStorage.getItem("posts") || "[]");
+
+            fakePosts.forEach(function(fakePost) {
+                posts.push(fakePost);
+            });
+
+            localStorage.setItem('posts', JSON.stringify(posts));
+            localStorage.setItem('firstTime', "false");
+        }
+          
+          
+
         posts = JSON.parse(localStorage.getItem("posts") || "[]");
           
         
