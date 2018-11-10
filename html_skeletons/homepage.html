@@ -68,6 +68,38 @@
         + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
 
 
+
+/*        cell.innerHTML =
+    //    "<div class='eventModel' id='postNumber" + index + "'>"
+                //+
+                "<div class='modal fade' id='postNumber"
+                //+ index
+                + "' tabindex=''-1' role='dialog' aria-labelledby='eventModalLabel' aria-hidden='true'>"
+                +  "<div class='modal-dialog' role='document'>"
+                +    "<div class='modal-content'>"
+                +      "<div class='modal-header'>"
+                +        "<h5 class='modal-title' id='eventModalLabel'>"+actName + " </h5>"
+                +        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                +          "<span aria-hidden='true'>&times;</span>"
+                +        "</button>"
+                +      "</div>"
+                +      "<div class='modal-body'>"
+                + startDate + " to <br/>"
+                + endDate + "<br/>"
+                + address + "<br/>"
+                + numPeople + "<br/>"
+                + description + "<br/>"
+                +      "</div>"
+                +      "<div class='modal-footer'>"
+                +        "<button type='button' class='btn btn-secondary' data-dismiss='modal'> Close </button>"
+                +        "<button type='button' class='btn btn-primary'> Unjoin </button>"
+                +      "</div> </div> </div> </div>"
+                //" </div>"
+                + "<button class = 'eventsButton' data-toggle='modal' data-target='#postNumber" +
+                //index +
+                "'" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
+*/
+
         cell.width = 225;
         cell.height = 225;
 
@@ -85,12 +117,12 @@
       function populate() {
 
         $('#posts').empty();
-          
+
         //for adding dummy posts
         localStorage.setItem('numPosts', 0);
-          
+
         var bool = localStorage.getItem('firstTime');
-          
+
         if(bool == "true") {
             posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
@@ -101,12 +133,12 @@
             localStorage.setItem('posts', JSON.stringify(posts));
             localStorage.setItem('firstTime', "false");
         }
-          
-          
+
+
 
         posts = JSON.parse(localStorage.getItem("posts") || "[]");
-          
-        
+
+
         posts.forEach(function(post) {
           addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
         });
