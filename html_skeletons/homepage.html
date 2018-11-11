@@ -138,6 +138,8 @@
 
         posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
+        //default to most recent posts -VK
+        posts.reverse();
 
         posts.forEach(function(post) {
           addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
@@ -182,8 +184,9 @@
           $('#posts').empty();
           posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-          temp_posts = posts
+          temp_posts = posts;
 
+          //emptiest
           if(evt.target.value === "4") {
               temp_posts = temp_posts.sort(function(a,b) {
                   return (Number(a.numPeople) > Number(b.numPeople)) ? 1 : ((Number(a.numPeople) < Number(b.numPeople)) ? -1 : 0);
@@ -191,11 +194,152 @@
 
           }
 
+          //fullest
           else if(evt.target.value === "3") {
               temp_posts = temp_posts.sort(function(a,b) {
                   return (Number(a.numPeople) < Number(b.numPeople)) ? 1 : ((Number(a.numPeople) > Number(b.numPeople)) ? -1 : 0);
               });
 
+          }
+          
+          //latest starting time
+          else if(evt.target.value === "1") {
+              temp_posts = temp_posts.sort(function(a,b) {
+                 
+                  var dateA = (a.startTime).split(" ")[0];
+                  var monthA = dateA.split("/")[0];
+                  var daysA = dateA.split("/")[1];
+                  var yearA = dateA.split("/")[2];
+                  
+                  
+                  var timeA = (a.startTime).split(" ")[1];
+                  var hoursA = timeA.split(":")[0];
+                  var minutesA = timeA.split(":")[1];
+                  var ampmA = (a.startTime).slice(-2);
+                  
+                  var dateB = (b.startTime).split(" ")[0];
+                  var monthB = dateB.split("/")[0];
+                  var daysB = dateB.split("/")[1];
+                  var yearB = dateB.split("/")[2];
+                  
+                  
+                  var timeB = (b.startTime).split(" ")[1];
+                  var hoursB = timeB.split(":")[0];
+                  var minutesB = timeB.split(":")[1];
+                  var ampmB = (b.startTime).slice(-2);
+
+                  if(yearA != yearB) {
+                      return yearA - yearB;
+                  }
+                  else if (monthA != monthB) {
+                      return monthA - monthB;
+                  }
+                  else if (daysA != daysB) {
+                      return daysA - daysB;
+                  }
+                  
+                  else if (hoursA != hoursB) {
+                      
+                      if(ampmA == ampmB) {
+                          
+                        if(ampmA == "PM") {
+                            return hoursB - hoursA;
+                        }
+                        return hoursA - hoursB;
+
+                      } 
+                      
+                      else {
+                          if(ampmA == "PM") {
+                              return hoursB - hoursA;
+                          }
+                          
+                          return hoursA - hoursB;
+                      }
+                  }
+                  
+                  else if (minutesA != minutesB) {
+                      return minutesA - minutesB;
+                  }
+                  
+                  else {
+                      return 0;
+                  }
+                  
+                  
+              });
+          }
+
+          //earliest starting time
+          else if(evt.target.value === "2") {
+              temp_posts = temp_posts.sort(function(a,b) {
+                 
+                  var dateA = (a.startTime).split(" ")[0];
+                  var monthA = dateA.split("/")[0];
+                  var daysA = dateA.split("/")[1];
+                  var yearA = dateA.split("/")[2];
+                  
+                  
+                  var timeA = (a.startTime).split(" ")[1];
+                  var hoursA = timeA.split(":")[0];
+                  var minutesA = timeA.split(":")[1];
+                  var ampmA = (a.startTime).slice(-2);
+                  
+                  var dateB = (b.startTime).split(" ")[0];
+                  var monthB = dateB.split("/")[0];
+                  var daysB = dateB.split("/")[1];
+                  var yearB = dateB.split("/")[2];
+                  
+                  
+                  var timeB = (b.startTime).split(" ")[1];
+                  var hoursB = timeB.split(":")[0];
+                  var minutesB = timeB.split(":")[1];
+                  var ampmB = (b.startTime).slice(-2);
+
+                  if(yearA != yearB) {
+                      return yearB - yearA;
+                  }
+                  else if (monthA != monthB) {
+                      return monthB - monthA;
+                  }
+                  else if (daysA != daysB) {
+                      return daysB - daysA;
+                  }
+                  
+                  else if (hoursA != hoursB) {
+                      
+                      if(ampmA == ampmB) {
+                          
+                        if(ampmA == "PM") {
+                            return hoursA - hoursB;
+                        }
+                        return hoursB - hoursA;
+
+                      } 
+                      
+                      else {
+                          if(ampmA == "PM") {
+                              return hoursA - hoursB;
+                          }
+                          
+                          return hoursB - hoursA;
+                      }
+                  }
+                  
+                  else if (minutesA != minutesB) {
+                      return minutesB - minutesA;
+                  }
+                  
+                  else {
+                      return 0;
+                  }
+                  
+              });
+          }
+          
+          //most recent posts
+          else if(evt.target.value === "0") {
+              temp_posts.reverse();
           }
 
           temp_posts.forEach(function(post) {
