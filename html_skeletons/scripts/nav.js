@@ -47,7 +47,7 @@ function addNewPost(actName, startDate, endDate, numPeople, address, description
     + startDate + " to <br/>"
     + endDate + "<br/>"
     + address + "<br/>"
-    + numPeople + "<br/>"
+    + "0/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
     + description + "<br/>"
     + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
 

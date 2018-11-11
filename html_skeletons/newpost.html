@@ -38,7 +38,7 @@
             && address.value !== null && address.value !== ""
             && numPeople.value !== null && numPeople.value !== "") {
           var posts = JSON.parse(localStorage.getItem("posts") || "[]");
-          posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, description: description.value, creator: creator});
+          posts.push({actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, numJoined: 0, description: description.value, creator: creator});
           localStorage.setItem('posts', JSON.stringify(posts));
       }
     }
@@ -56,6 +56,13 @@
         });
     });
 
+    function limit(element, num) {
+        var max_chars = num;
+
+        if(element.value.length > max_chars) {
+            element.value = element.value.substr(0, max_chars);
+        }
+    }
     </script>
   </head>
     <body>
@@ -93,8 +100,8 @@
                     <label for = "actName">Activity Name </label>
                   </div>
                   <div class = "col-75">
-                     <input type = "text" id = "actName"
-                            name = "activityname" required> <br>
+                     <input type = "text" id = "actName" placeholder="limit to 30 chars"
+                            name = "activityname" onkeydown="limit(this, 30)" onkeyup="limit(this, 30)" required> <br>
                   </div>
                 </div>
                 <div class="row">
@@ -144,10 +151,10 @@
                   </div>
                   <div class="row">
                       <div class="col-25">
-                        <label for="description">Addition Information</label>
+                        <label for="description">Additional Information</label>
                       </div>
                       <div class="col-75">
-                        <textarea id="description" name="description"  style="height:200px"></textarea>
+                        <textarea id="description" name="description"  style="height:200px" onkeydown="limit(this, 500)" onkeyup="limit(this, 500)" placeholder="limit to 500 chars"></textarea>
                       </div>
                     </div>
                     <div class="row">
