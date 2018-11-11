@@ -14,11 +14,10 @@
 /* The popup form - hidden by default */
 .event-popup {
   display: none;
-  position:absolute;
+  position: fixed;
   top:50%;
   left:50%;
   width:400px;  /* adjust as per your needs */
-  height:400px;   /* adjust as per your needs */
   margin-left:-200px;   /* negative half of width above */
   margin-top:-200px;   /* negative half of height above */
   background-color: #80bfff;
@@ -26,7 +25,7 @@
   border-radius: 10px;
   padding: 10px;
   color: white;
-  font-size: 30;
+  font-size: 20;
   font-family: "HelveticaNeue-Light";
 }
 
@@ -310,4 +309,8 @@
 .btnhome {
   width: 34.5;
   height: 34.5;
+}
+
+#posts td {
+    word-wrap:break-word;
 }

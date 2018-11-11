@@ -57,7 +57,8 @@
 
         var index = parseInt(localStorage.getItem('numPosts'));
         numPosts = index + 1;
-
+        cell.width = 225;
+        cell.height = 225;
         cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
         + actName + "<br/>"
         + startDate + " to <br/>"
@@ -100,8 +101,7 @@
                 "'" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
 */
 
-        cell.width = 225;
-        cell.height = 225;
+
 
 
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
@@ -394,7 +394,7 @@
 
     <center>
         <!-- THIS IS WHERE THE POSTS WILL GO - VK -->
-        <table id="posts">
+        <table id="posts" table-layout= "fixed">
             <br>
             <br>
         </table>
