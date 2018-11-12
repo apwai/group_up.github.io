@@ -1,27 +1,37 @@
-<html>
+"'<html>
   <head>
-    <title>App Name</title>
-    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Group Up</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+
+
     <script src = "scripts/information.js"> </script>
-      <script src = "scripts/bootstrap.min.js"> </script>
-      <script src = "scripts/handlebars-v4.0.11.js"> </script>
+     <script src = "scripts/bootstrap.min.js"> </script>
+    <script src = "scripts/handlebars-v4.0.11.js"> </script>
     <script>
 
       //use this if you want to clear all the data, make sure to comment it out again after one run - VK
       //localStorage.clear();
 
-      function openEvent(index) {
+
+
+
+/*      function openEvent(index) {
         document.getElementById("postNumber" + index).style.display = "block";
       }
 
       function closeEvent(index) {
         document.getElementById("postNumber" + index).style.display = "none";
       }
-
+*/
       function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
       }
@@ -59,49 +69,72 @@
         numPosts = index + 1;
         cell.width = 225;
         cell.height = 225;
-        cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
+/*       cell.innerHTML = "<div class='event-popup' id='postNumber" + index + "'> <center>"
         + actName + "<br/>"
         + startDate + " to <br/>"
         + endDate + "<br/>"
         + address + "<br/>"
         + "0/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
         + description + "<br/>"
-        + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>" + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
-
-
-
-/*        cell.innerHTML =
-    //    "<div class='eventModel' id='postNumber" + index + "'>"
-                //+
-                "<div class='modal fade' id='postNumber"
-                //+ index
-                + "' tabindex=''-1' role='dialog' aria-labelledby='eventModalLabel' aria-hidden='true'>"
-                +  "<div class='modal-dialog' role='document'>"
-                +    "<div class='modal-content'>"
-                +      "<div class='modal-header'>"
-                +        "<h5 class='modal-title' id='eventModalLabel'>"+actName + " </h5>"
-                +        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
-                +          "<span aria-hidden='true'>&times;</span>"
-                +        "</button>"
-                +      "</div>"
-                +      "<div class='modal-body'>"
-                + startDate + " to <br/>"
-                + endDate + "<br/>"
-                + address + "<br/>"
-                + numPeople + "<br/>"
-                + description + "<br/>"
-                +      "</div>"
-                +      "<div class='modal-footer'>"
-                +        "<button type='button' class='btn btn-secondary' data-dismiss='modal'> Close </button>"
-                +        "<button type='button' class='btn btn-primary'> Unjoin </button>"
-                +      "</div> </div> </div> </div>"
-                //" </div>"
-                + "<button class = 'eventsButton' data-toggle='modal' data-target='#postNumber" +
-                //index +
-                "'" + actName + "<br/>" + address + "<br/>" + startDate + "<br/> </button>";
+        + "<button onclick = 'toProfile()'> Bob Chen </button><button type='submit' class='btn'>Unjoin Event</button><button type='submit' class='btn cancel' onclick='closeEvent(" + index + ")'>Close</button></center></div>"
+        + "<button class = 'eventsButton' onclick='openEvent(" + index + ")'>" + actName + "<br/>" + "<div class ='eventInfo'>" + address + "<br/>" + startDate + "<br/> <div> </button>";
 */
 
+  /*      cell.innerHTML = "<div id = 'postNumber-" + index + "' class='modal' class = 'eventPopup'>"
+          + "<h3><center>" + actName + "</center></h3><br/>"
+          + "<div class = 'popupInfo'>"
+          + startDate + " to " + endDate + "<br/>"
+          + "Location: " + address + "<br/>"
+          + "0/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
+          + "Addition information: " + description + "<br/> </div> </div>"
+*/
+         /*+ "<button class = 'eventsButton' onclick='location.href = '#postNumber" + index + "'' rel='modal:open'>"
+         + actName + "<br/>"
+         + "<div class ='eventInfo'>"
+         + address + "<br/>"
+         + startDate + "<br/> "
+         + "</div>"
+         + "</button>";
+*/
 
+      /*    + "<a class = 'eventsButton' href = '#postNumber-" + index + "' rel='modal:open'>"
+          +"<span class = 'centerer'></span>"
+          +"<span class = 'eventText'>"
+          + actName + "<br/>" + "<div class ='eventInfo'>" + address + "<br/>" + startDate + "<br/> </div>"
+          + "</span></a>";
+*/
+
+          cell.innerHTML = "<div id = 'postNumber" + index +  "' class='modal fade' role='dialog'>"
+            + "<div class='modal-dialog' role='document'>"
+            + "<div class='modal-content'>"
+            +    "<div class='modal-header'>"
+            +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
+            +      "<h5 class='modal-title'>" + actName + "</h5>"
+            +    "</div>"
+            +    "<div class='modal-body'>"
+            + "<div class = 'popupInfo'>"
+            + startDate + " - " + endDate + "<br/>"
+            +  address + "<br/>"
+            + "0/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
+            + description + "<br/> </div>"
+            +    "</div>"
+            +    "<div class='modal-footer'>"
+            +      "<button type='button' class='btn btn-primary' data-dismiss='modal'>Join Event</button>" //TODO
+            +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
+            +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+            +    "</div>"
+            +  "</div>"
+            + "</div>"
+            + "</div>"
+
+          /* the event buttons */
+          + "<button class = 'eventsButton' data-toggle='modal' data-target = '#postNumber" + index + "'>"
+          + actName + "<br/>"
+          + "<div class ='eventInfo'>"
+          + address + "<br/>"
+          + startDate + "<br/> "
+          + "</div>"
+          + "</button>";
 
 
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
@@ -109,6 +142,11 @@
         localStorage.setItem('numPosts', numPosts);
 
       }
+
+
+
+
+
 
       function getEvents() {
           //FIND THE POSTS THAT THEY CREATE AND THE POSTS THEY JOIN
@@ -201,28 +239,28 @@
               });
 
           }
-          
+
           //latest starting time
           else if(evt.target.value === "1") {
               temp_posts = temp_posts.sort(function(a,b) {
-                 
+
                   var dateA = (a.startTime).split(" ")[0];
                   var monthA = dateA.split("/")[0];
                   var daysA = dateA.split("/")[1];
                   var yearA = dateA.split("/")[2];
-                  
-                  
+
+
                   var timeA = (a.startTime).split(" ")[1];
                   var hoursA = timeA.split(":")[0];
                   var minutesA = timeA.split(":")[1];
                   var ampmA = (a.startTime).slice(-2);
-                  
+
                   var dateB = (b.startTime).split(" ")[0];
                   var monthB = dateB.split("/")[0];
                   var daysB = dateB.split("/")[1];
                   var yearB = dateB.split("/")[2];
-                  
-                  
+
+
                   var timeB = (b.startTime).split(" ")[1];
                   var hoursB = timeB.split(":")[0];
                   var minutesB = timeB.split(":")[1];
@@ -237,60 +275,60 @@
                   else if (daysA != daysB) {
                       return daysA - daysB;
                   }
-                  
+
                   else if (hoursA != hoursB) {
-                      
+
                       if(ampmA == ampmB) {
-                          
+
                         if(ampmA == "PM") {
                             return hoursB - hoursA;
                         }
                         return hoursA - hoursB;
 
-                      } 
-                      
+                      }
+
                       else {
                           if(ampmA == "PM") {
                               return hoursB - hoursA;
                           }
-                          
+
                           return hoursA - hoursB;
                       }
                   }
-                  
+
                   else if (minutesA != minutesB) {
                       return minutesA - minutesB;
                   }
-                  
+
                   else {
                       return 0;
                   }
-                  
-                  
+
+
               });
           }
 
           //earliest starting time
           else if(evt.target.value === "2") {
               temp_posts = temp_posts.sort(function(a,b) {
-                 
+
                   var dateA = (a.startTime).split(" ")[0];
                   var monthA = dateA.split("/")[0];
                   var daysA = dateA.split("/")[1];
                   var yearA = dateA.split("/")[2];
-                  
-                  
+
+
                   var timeA = (a.startTime).split(" ")[1];
                   var hoursA = timeA.split(":")[0];
                   var minutesA = timeA.split(":")[1];
                   var ampmA = (a.startTime).slice(-2);
-                  
+
                   var dateB = (b.startTime).split(" ")[0];
                   var monthB = dateB.split("/")[0];
                   var daysB = dateB.split("/")[1];
                   var yearB = dateB.split("/")[2];
-                  
-                  
+
+
                   var timeB = (b.startTime).split(" ")[1];
                   var hoursB = timeB.split(":")[0];
                   var minutesB = timeB.split(":")[1];
@@ -305,38 +343,38 @@
                   else if (daysA != daysB) {
                       return daysB - daysA;
                   }
-                  
+
                   else if (hoursA != hoursB) {
-                      
+
                       if(ampmA == ampmB) {
-                          
+
                         if(ampmA == "PM") {
                             return hoursA - hoursB;
                         }
                         return hoursB - hoursA;
 
-                      } 
-                      
+                      }
+
                       else {
                           if(ampmA == "PM") {
                               return hoursA - hoursB;
                           }
-                          
+
                           return hoursB - hoursA;
                       }
                   }
-                  
+
                   else if (minutesA != minutesB) {
                       return minutesB - minutesA;
                   }
-                  
+
                   else {
                       return 0;
                   }
-                  
+
               });
           }
-          
+
           //most recent posts
           else if(evt.target.value === "0") {
               temp_posts.reverse();
@@ -393,6 +431,7 @@
       </div>
 
     <center>
+
         <!-- THIS IS WHERE THE POSTS WILL GO - VK -->
         <table id="posts" table-layout= "fixed">
             <br>

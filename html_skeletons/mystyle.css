@@ -1,25 +1,87 @@
 .eventsButton {
-    font-size: 30px;
+    display: inline-block;
+    transition-duration: .25s;
+    text-align: center;
+    text-decoration: none !important;
+    font-family: "HelveticaNeue";
+    font-weight: bold;
+    color: black;
+     font-size: 24px;
      height: 200px;
      width: 300px;
      padding: 10px;
-     border-radius: 10px;
-     -moz-border-radius: 10px;
-     -webkit-border-radius: 10px;
+     border-radius: 5px;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
      margin:10px;
+     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+     overflow: hidden;
  }
 
- {box-sizing: border-box;}
+.eventsButton .centerer {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.eventsButton .eventText {
+  vertical-align: middle;
+  display: inline-block;
+}
+.eventsButton focus,
+.eventsButton hover {
+  color: black;
+}
+ .eventsButton .eventInfo {
+   font-weight: normal;
+   font-family: "HelveticaNeue";
+   font-style: oblique;
+   font-size: 16px;
+   color: gray;
+ }
+
+.eventPopup {
+  font-family: "HelveticaNeue";
+  font-weight: bold;
+  color: black;
+  font-size: 24px;
+  overflow: visible;
+}
+
+.eventPopup .popupInfo {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.modal-header {
+  background-color: #99ccff;
+  color: white;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-family: "HelveticaNeue";
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-body {
+  font-size: 16px;
+  font-family: "HelveticaNeue";
+  text-align: left;
+  margin-left: 30px;
+  line-height: 25px;
+}
 
 /* The popup form - hidden by default */
-.event-popup {
+/*.event-popup {
   display: none;
   position: fixed;
   top:50%;
   left:50%;
-  width:400px;  /* adjust as per your needs */
-  margin-left:-200px;   /* negative half of width above */
-  margin-top:-200px;   /* negative half of height above */
+  width:400px;
+  margin-left:-200px;
+  margin-top:-200px;
   background-color: #80bfff;
   border-color: black;
   border-radius: 10px;
@@ -28,6 +90,7 @@
   font-size: 20;
   font-family: "HelveticaNeue-Light";
 }
+
 
 .event-popup button{
   padding: 5px;
@@ -41,7 +104,7 @@
   border-radius: 4px;
 
 }
-
+*/
 /* Add styles to the form container */
 .event-container {
   max-width: 300px;
@@ -170,6 +233,21 @@
   margin-left: 10px;
   height: 50px;
   background-color: #99ccff;
+}
+.pageTitle {
+  color: white;
+  font-size: 24px;
+  font-family: "HelveticaNeue";
+
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .topnav .search-container-new button {
