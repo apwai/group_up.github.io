@@ -1,8 +1,6 @@
 <html>
 
     <title>Events</title>
-
-
     <head>
         <link rel="stylesheet" type = "text/css" href = "mystyle.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -11,10 +9,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src = "scripts/nav.js"> </script>
         <script src = "scripts/information.js"> </script>
-
-
-  <!--      <a href="./homepage.html">Back to Homepage</a> -->
-
     </head>
 
     <body onload="populate()">
@@ -29,13 +23,13 @@
 
       <!-- TOP NAVIGATION BAR -->
       <div class="topnav">
-          <div class="search-container-new">
+          <div class="search-container">
               <form id = "searchForm" onsubmit = "return false;">
                 <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
-                <!--<input type="text" placeholder="Search by...name...location..." id="search" name="search" >
+                <input type="text" placeholder="Search by...name...location..." id="search" name="search" >
                 <button class="btnsearch" onclick="searchResults()" type="submit"><i class="fa fa-search"></i></button>
-                <button onclick="location.href='./newpost.html'" > Create Event </button> -->
-              <!--  <button onclick="location.href='./messages.html'" > Messages </button> -->
+                <button onclick="location.href='./newpost.html'" > Create Event </button>
+        <!--        <button onclick="location.href='./messages.html'" > Messages </button> -->
                 <button class="btnhome" onclick="location.href='./homepage.html'" ><i class="fa fa-home"></i></button>
               </form>
           </div>
