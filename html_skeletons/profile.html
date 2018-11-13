@@ -5,12 +5,50 @@
 
     <head>
         <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-        <a href="./homepage.html">Back to Homepage</a><br>
-        <img src="default_profile.png" />
-        <h1>Bob Chen</h1>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script>
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+        </script>
+
     </head>
 
     <body>
+      <!--  for the side menu -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="./profile.html">My Profile</a>
+        <a href="./myposts.html">My Posts</a>
+        <a href="./settings.html">Settings</a>
+      </div>
+
+
+      <div class="topnav">
+
+          <div class="search-container-new">
+
+            <!--  <form> -->
+                <span style="font-size:30px;cursor:pointer;color:white; float: left;" onclick="openNav()">&#9776;</span>
+                <!--<input type="text" placeholder="Search..." name="search">
+                <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
+                <button formaction = "./newpost.html" value="else"> Create Event </button>
+               <button formaction = "./messages.html" value="else"> Messages </button> -->
+                <div class="pageTitle" style = ""> Profile </div>
+        <!--        <button class="btnhome" formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button> -->
+          <button class="btnhome" onclick= "location.href='./homepage.html'"><i class="fa fa-home"></i></button>
+        </div>
+      </div>
+<div>
+     <img src="default_profile.png" />
+        <h1>Bob Chen</h1>
+
         facebook URL: facebook.com/bobchen<br>
         Interests: basketball, boxing, tennis.<br>
 
@@ -32,7 +70,9 @@
               </button>
             </td>
           </tr>
-        </table>    
+        </table>
+
+      </div>
     </body>
 
 </html>
