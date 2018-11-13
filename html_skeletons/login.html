@@ -17,10 +17,12 @@
 
     <script>
 
-
+        function saveUser() {
         //for now, have logged in user be a dummy user
-        localStorage.setItem('currUser', "dummy");
-        localStorage.setItem('firstTime', "true");
+            user = document.getElementById("username");
+            localStorage.setItem('currUser', user.value);
+            //localStorage.setItem('firstTime', "true");
+        }
 
 
     </script>
@@ -46,9 +48,9 @@
           </form>
 
           <form class="login-form" action = "./homepage.html">
-            <input type="text" placeholder="username" required/>
+            <input type="text" placeholder="username" id="username" required/>
             <input type="password" placeholder="password" required/>
-            <button type="submit">login</button>
+            <button type="submit" onclick="saveUser()">login</button>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
           </form>
         </div>
