@@ -24,7 +24,7 @@
       }
 
       function addPost() {
-          
+
         var actName = document.getElementById("actName");
         var startTime = document.getElementById("startTime");
         var endTime = document.getElementById("endTime");
@@ -38,10 +38,10 @@
             && endTime.value !== null && endTime.value !== ""
             && address.value !== null && address.value !== ""
             && numPeople.value !== null && numPeople.value !== "") {
-          
+
           n = localStorage.getItem('numPosts');
           var posts = JSON.parse(localStorage.getItem("posts") || "[]");
-            
+
           posts.push({id: n, actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, numJoined: 1, description: description.value, creator: creator, userList: [creator]});
           localStorage.setItem('posts', JSON.stringify(posts));
       }
@@ -74,7 +74,7 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./profile.html">My Profile</a>
-        <a href="./myposts.html">My Posts</a>
+        <a href="./myposts.html">My Events</a>
         <a href="./settings.html">Settings</a>
       </div>
 
