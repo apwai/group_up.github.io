@@ -14,30 +14,57 @@
      <script src = "scripts/bootstrap.min.js"> </script>
     <script src = "scripts/handlebars-v4.0.11.js"> </script>
     <script>
+      function unjoinEvent(id) {
+        alert("test unjoin");
+        posts = JSON.parse(localStorage.getItem('posts') || "[]");
+        count = 0;
+        posts.forEach(function(post) {
+            if(post.id == id) {
+                currUser = localStorage.getItem("currUser");
+                post.userList.forEach(function(user) {
+                  if (user == currUser) {
+                    delete post.userList[count];
+                    alert(post.userList);
+                  }
+                  count += 1;
+                });
+                post.numJoined -= 1;
+            }      
+        });
+
+
+                //alert("you joined the event"); //TODO
+
+            //temp.push({id: post.id, actName: post.actName, startTime: post.startTime, endTime: post.endTime, address: post.address, numPeople: post.numPeople, numJoined: post.numJoined, description: post.description, creator: post.creator, userList: post.userList});
+
+
+        localStorage.setItem("posts", JSON.stringify(posts));
+        window.location.href = './homepage.html';
+      }
 
       function joinEvent(id) {
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
-        
+
         posts.forEach(function(post) {
             if(post.id == id) {
                 user = localStorage.getItem("currUser");
                 post.userList.push(user);
                 post.numJoined += 1;
                 //alert("you joined the event"); //TODO
-                
+
             }
-            
+
             //temp.push({id: post.id, actName: post.actName, startTime: post.startTime, endTime: post.endTime, address: post.address, numPeople: post.numPeople, numJoined: post.numJoined, description: post.description, creator: post.creator, userList: post.userList});
         });
-          
+
         localStorage.setItem("posts", JSON.stringify(posts));
         window.location.href = './homepage.html';
 
-          
+
       }
       //use this if you want to clear all the data, make sure to comment it out again after one run - VK
       //localStorage.clear();
-        
+
       function checkJoined(id) {
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
 
@@ -46,8 +73,8 @@
                 user = localStorage.getItem("currUser");
 
                 alert(post.userList); //TODO
-                
-                
+
+
             }
         });
       }
@@ -65,7 +92,7 @@
           location.href = './profile.html';
       }
 
-      function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined) {
+      function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined, checkJoin) {
 
 
         var table = document.getElementById("posts");
@@ -86,13 +113,19 @@
         var cell = allRows[numRows - 1].insertCell(length);
 
         var index = parseInt(localStorage.getItem('numPosts'));
-          
+
         numPosts = index + 1;
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
 
         cell.width = 225;
         cell.height = 225;
+          if (checkJoin == true) {
+            buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='unjoinEvent(" + id + ")'>Unjoin Event</button>"
+          }
 
+          else {
+            buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='joinEvent(" + id + ")'>Join Event</button>"
+          }
           cell.innerHTML = "<div id = 'postNumber" + index +  "' class='modal fade' role='dialog'>"
             + "<div class='modal-dialog' role='document'>"
             + "<div class='modal-content'>"
@@ -108,7 +141,7 @@
             + description + "<br/> </div>"
             +    "</div>"
             +    "<div class='modal-footer'>"
-            +      "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='joinEvent(" + id + ")'>Join Event</button>" //TODO
+            +      buttonString
             +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
             +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
             +    "</div>"
@@ -127,7 +160,7 @@
 
 
         /*posts = JSON.parse(localStorage.getItem('posts') || "[]");
-          
+
         posts.push({id: id, actName: actName, startTime: startDate, endTime: endDate, address: address, numPeople: numPeople, numJoined: 1, description: description, creator: creator, userList: [creator]});*/
         localStorage.setItem('numPosts', numPosts);
 
@@ -146,26 +179,19 @@
 
         var bool = localStorage.getItem('firstTime');
 
-        /*if(bool == "true") {
-            posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
-            fakePosts.forEach(function(fakePost) {
-                posts.push(fakePost);
-            });
-
-            localStorage.setItem('posts', JSON.stringify(posts));
-            localStorage.setItem('firstTime', "false");
-        }*/
-
-
-
         posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
         //default to most recent posts -VK
         posts.reverse();
 
         posts.forEach(function(post) {
-          addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined);
+          currUser = localStorage.getItem('currUser');
+          if(post.userList.includes(currUser)) {
+            addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
+          }
+          else {
+            addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, false);
+          }
         });
       }
 
