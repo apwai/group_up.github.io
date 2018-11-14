@@ -24,12 +24,11 @@
                 post.userList.forEach(function(user) {
                   if (user == currUser) {
                     delete post.userList[count];
-                    alert(post.userList);
                   }
                   count += 1;
                 });
                 post.numJoined -= 1;
-            }      
+            }
         });
 
 
@@ -144,6 +143,7 @@
             +      buttonString
             +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
             +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+
             +    "</div>"
             +  "</div>"
             + "</div>"
@@ -406,7 +406,7 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="./profile.html">My Profile</a>
       <a href="./myposts.html">My Events</a>
-      <a href="./settings.html">Settings</a>
+      <a href= "./login.html"> Log Out </a>
     </div>
 
 
