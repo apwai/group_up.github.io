@@ -8,7 +8,13 @@
         <link rel = "stylesheet" type = "text/css" href = "profileStyle.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <script>
+          // check if user is logged in
+          if (localStorage.getItem('currUser') == null ||
+            localStorage.getItem('currUser') == "") {
+              document.location.replace("./login.html");
+          }
+        </script>
         <script>
           function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
@@ -26,7 +32,7 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./profile.html">My Profile</a>
-        <a href="./myposts.html">My Posts</a>
+        <a href="./myposts.html">My Events</a>
         <a href="./login.html"> Log Out </a>
       </div>
 
@@ -47,37 +53,41 @@
         </div>
       </div>
 
-      <div class = container class="w3-card-4">
-        <img id= profilePic src="bobchen.jpeg" alt="Person">
+      <div class = "container" class="w3-card-4">
+        <img style="float: right;" id= "profilePic" src="bobchen.jpeg" alt="Person">
       </div>
 
-        <h1 id= profileName> Bob Chen</h1>
+        <h1 id= "profileName"> Bob Chen </h1>
 
-        <div class = container id = contactBox>
-          <img id = contactIcon src = "facebookIcon.png"> <p id= contactTitles> FACEBOOK: </p> <br> www.facebook.com/bobchen <br>
-          <img id = contactIcon src= "emailIcon.png"> <p id = contactTitles> EMAIL: bobchen234@gmail.com <br>
+        <div class = "container">
+          <img id = "contactIcon" src = "facebookIcon.png">  FACEBOOK: www.facebook.com/bobchen <br>
+          <img id = "contactIcon" src= "emailIcon.png"> MAIL: bobchen234@gmail.com <br>
+          <p id= "interests"> Interests: basketball, boxing, tennis. </p> <br>
+          <p id= "intro"> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p>
         </div>
-        <p id=interests> Interests: basketball, boxing, tennis. </p> <br>
-        <p id= intro> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p>
-        <h3>Bob's Events:</h3>
-        <table>
-          <tr>
-            <td>
-              <button class = "events">
-                Basketball<br/>
-                Main Gym <br/>
-                10/31/18 7pm <br/>
-              </button>
-            </td>
-            <td>
-              <button class = "events">
-                Boxing<br/>
-                Main Gym <br/>
-                11/1/18 6pm <br/>
-              </button>
-            </td>
-          </tr>
-        </table>
+
+
+        <div class= "container">
+          <h3>Bob's Events:</h3>
+          <table>
+            <tr>
+              <td>
+                <button class = "events">
+                  Basketball<br/>
+                  Main Gym <br/>
+                  10/31/18 7pm <br/>
+                </button>
+              </td>
+              <td>
+                <button class = "events">
+                  Boxing<br/>
+                  Main Gym <br/>
+                  11/1/18 6pm <br/>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
 
       </div>
     </body>

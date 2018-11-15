@@ -39,7 +39,7 @@
           }
           return valid;
         }
-    
+
     //localStorage.clear()
         function addUser() {
             var firstname = document.getElementById("firstname");
@@ -49,7 +49,7 @@
             var fbURL = document.getElementById("fbURL");
             var profilesrc = document.getElementById("profilepic");
             var activities = document.getElementById("activities");
-            
+
             //alert(firstname.value)
             //alert(lastname.value)
             //alert(username.value)
@@ -68,7 +68,7 @@
               users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activites: activities});
               localStorage.setItem('allUsers', JSON.stringify(users));
           }
-            
+
         }
 
 

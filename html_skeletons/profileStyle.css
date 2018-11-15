@@ -9,9 +9,13 @@
 #contactIcon {
   width: 3%
 }
+
+#control {
+  width: 5%
+}
 .container {
-    width: 10px;
-    height: 10px;
+    width: 100px;
+    height: 150px;
 }
 
 /* resize images */
