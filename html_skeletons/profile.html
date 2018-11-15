@@ -5,6 +5,7 @@
 
     <head>
         <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+        <link rel = "stylesheet" type = "text/css" href = "profileStyle.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -26,7 +27,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./profile.html">My Profile</a>
         <a href="./myposts.html">My Posts</a>
-        <a href="./settings.html">Settings</a>
+        <a href="./login.html"> Log Out </a>
       </div>
 
 
@@ -45,13 +46,19 @@
           <button class="btnhome" onclick= "location.href='./homepage.html'"><i class="fa fa-home"></i></button>
         </div>
       </div>
-<div>
-     <img src="default_profile.png" />
-        <h1>Bob Chen</h1>
 
-        facebook URL: facebook.com/bobchen<br>
-        Interests: basketball, boxing, tennis.<br>
+      <div class = container class="w3-card-4">
+        <img id= profilePic src="bobchen.jpeg" alt="Person">
+      </div>
 
+        <h1 id= profileName> Bob Chen</h1>
+
+        <div class = container id = contactBox>
+          <img id = contactIcon src = "facebookIcon.png"> <p id= contactTitles> FACEBOOK: </p> <br> www.facebook.com/bobchen <br>
+          <img id = contactIcon src= "emailIcon.png"> <p id = contactTitles> EMAIL: bobchen234@gmail.com <br>
+        </div>
+        <p id=interests> Interests: basketball, boxing, tennis. </p> <br>
+        <p id= intro> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p>
         <h3>Bob's Events:</h3>
         <table>
           <tr>
