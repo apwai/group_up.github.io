@@ -103,13 +103,11 @@
       }
 
       function toProfile(clickedUser) {
-        alert("here");
           //we will need to modify this method later when we get more users in the system - VK
           var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
           users.forEach(function(user) {
             if (user.username.value == clickedUser) {
               localStorage.setItem('clickedProfile', user);
-              alert(localStorage.getItem('clickedProfile'));
               location.href = './profile.html';
             }
           });
