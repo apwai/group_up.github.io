@@ -27,8 +27,10 @@
           password = document.getElementById("password");
 
           var valid = false;
-          accounts.forEach(function(account) {
-            if (username.value == account.username && password.value == account.password) {
+          var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+
+          users.forEach(function(user) {
+            if (username.value == user.username && password.value == user.password) {
               valid = true;
             }
           });
@@ -36,6 +38,37 @@
             swal("Invalid username and password. Please try again.");
           }
           return valid;
+        }
+    
+    //localStorage.clear()
+        function addUser() {
+            var firstname = document.getElementById("firstname");
+            var lastname = document.getElementById("lastname");
+            var username = document.getElementById("newusername");
+            var password = document.getElementById("newpassword");
+            var fbURL = document.getElementById("fbURL");
+            var profilesrc = document.getElementById("profilepic");
+            var activities = document.getElementById("activities");
+            
+            //alert(firstname.value)
+            //alert(lastname.value)
+            //alert(username.value)
+            //alert(password.value)
+            //alert(fbURL.value)
+            //alert(profilesrc.value)
+            //alert(activities.value)
+
+            if (firstname.value !== null && firstname.value !== ""
+                && lastname.value !== null && lastname.value !== ""
+                && username.value !== null && username.value !== ""
+                && password.value !== null && password.value !== "") {
+
+              var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+
+              users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activites: activities});
+              localStorage.setItem('allUsers', JSON.stringify(users));
+          }
+            
         }
 
 
@@ -49,15 +82,15 @@
         <br />
         <div class="form">
          <form class="register-form" action="./homepage.html">
-            <input type="text" placeholder="first name" required><br>
-            <input type="text" placeholder="last name" required><br>
-            <input type="text" placeholder="username" required><br>
-            <input type="password" placeholder="password" required><br>
+            <input type="text" placeholder="first name" id= "firstname" required><br>
+            <input type="text" placeholder="last name" id="lastname" required><br>
+            <input type="text" placeholder="username" id="newusername" required><br>
+            <input type="password" placeholder="password" id="newpassword" required><br>
             <input type="password" placeholder = "confirm password" required><br>
-            <input type="text" placeholder = "facebook URL"><br>
-            Upload a profile picture <input type="file" name="pic" accept="image/*"> <br>
-            <textarea placeholder="List some of the activities you are interested in: " name="myinfo" cols="40" rows="5"></textarea> <br>
-            <button>create</button>
+            <input type="text" placeholder = "facebook URL" id="fbURL"><br>
+            Upload a profile picture <input type="file" name="pic" accept="image/*" id="profilepic"> <br>
+            <textarea placeholder="List some of the activities you are interested in: " name="myinfo" cols="40" rows="5" id="activities"></textarea> <br>
+            <button onclick="addUser()">create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form>
 
