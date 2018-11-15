@@ -138,10 +138,13 @@ function populate() {
     localStorage.setItem('numPosts', 0);
     posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
+    var hasEvent = false;
       posts.forEach(function(post) {
         if (post.userList.includes(localStorage.getItem('currUser'))) {
+          hasEvent = true;
           addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
         }
+
 
        // if (post.creator == localStorage.getItem('currUser')) {
        //    if (post.userList.includes(localStorage.getItem('currUser'))) {
@@ -151,6 +154,13 @@ function populate() {
        //    }
        //  }
       });
+
+      if (!hasEvent) {
+        var table = document.getElementById("posts");
+        var row = table.insertRow(0);
+        var cell = row.insertCell(0);
+        cell.innerHTML = "<h3>Whoops. You don't have any joined events.</h3>";
+      }
 }
 
 function strcmp(a, b) {
@@ -196,7 +206,7 @@ function filter(evt) {
   $('#posts').empty();
   posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-  temp_posts = posts
+  temp_posts = posts;
 
   if(evt.target.value === "4") {
       temp_posts = temp_posts.sort(function(a,b) {
