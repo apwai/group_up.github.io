@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Group Up</title>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!--    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
@@ -17,8 +17,15 @@
      <script src = "scripts/bootstrap.min.js"> </script>
     <script src = "scripts/handlebars-v4.0.11.js"> </script>
     <script>
+      // check if user is logged in
+      if (localStorage.getItem('currUser') == null ||
+        localStorage.getItem('currUser') == "") {
+          document.location.replace("./login.html");
+      }
+    </script>
+    <script>
       function unjoinEvent(id) {
-        alert("test unjoin");
+        //alert("test unjoin");
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
         count = 0;
         posts.forEach(function(post) {
@@ -26,7 +33,13 @@
                 currUser = localStorage.getItem("currUser");
                 post.userList.forEach(function(user) {
                   if (user == currUser) {
-                    delete post.userList[count];
+                    //delete post.userList[count];
+                    if (post.userList.length <= 1) {
+                      post.userList = [];
+                    } else {
+                      post.userList.splice(count, count);
+                    }
+                    alert(post.userList);
                   }
                   count += 1;
                 });
@@ -74,7 +87,7 @@
             if(post.id == id) {
                 user = localStorage.getItem("currUser");
 
-                alert(post.userList); //TODO
+                //alert(post.userList); //TODO
 
 
             }
@@ -94,7 +107,25 @@
           location.href = './profile.html';
       }
 
-      function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined, checkJoin) {
+    //  function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined, checkJoin) {
+
+    function addNewPost(post, checkJoin) {
+
+        actName = post.actName;
+        startDate = post.startTime;
+        endDate = post.endTime;
+        numPeople = post.numPeople;
+        address = post.address;
+        description = post.description;
+        id = post.id;
+        numJoined = post.numJoined;
+        userList = post.userList;
+
+        // get list of users for event
+        listOfAttendees = "";
+        userList.forEach(function(user) {
+          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile()'> "+ user+ "</button>" + ' ';
+        });
 
 
         var table = document.getElementById("posts");
@@ -142,27 +173,24 @@
             + numJoined + "/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
             + description + "<br/> </div>"
             +    "</div>"
+            /* start extra info */
+              +      "<div class='panel-group'>"
+              +         "<div class='panel panel-default'>"
+              +           "<div class='panel-heading'>"
+              +             "<h4 class='panel-title'>"
+              + "<a data-toggle='collapse' href='#collapse1'> See List of Attendees </a>"
+              + "</h4>"
+              + "</div>"
+              + "<div id='collapse1' class='panel-collapse collapse'>"
+              +   "<div class='panel-body'> "+ listOfAttendees + "  </div>"
+              + "</div>"
+              + "</div>"
+              + "</div>"
             +    "<div class='modal-footer'>"
             +      buttonString
             +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
             +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
             + "<br>"
-          /* start extra info */
-            +      "<div class='panel-group'>"
-            +         "<div class='panel panel-default'>"
-            +           "<div class='panel-heading'>"
-            +             "<h4 class='panel-title'>"
-            + "<a data-toggle='collapse' href='#collapse1'> See More Info </a>"
-            + "</h4>"
-            + "</div>"
-            + "<div id='collapse1' class='panel-collapse collapse'>"
-            +   "<div class='panel-body'> Panel Body  </div>"
-            + "<div class='panel-footer'> Panel Footer </div>"
-            + "</div>"
-            + "</div>"
-            + "</div>"
-
-
             +    "</div>"
             +  "</div>"
             + "</div>"
@@ -206,10 +234,12 @@
         posts.forEach(function(post) {
           currUser = localStorage.getItem('currUser');
           if(post.userList.includes(currUser)) {
-            addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
+            //addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
+            addNewPost(post, true);
           }
           else {
-            addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, false);
+            //addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, false);
+            addNewPost(post, false);
           }
         });
       }
@@ -230,7 +260,13 @@
           posts.forEach(function(post) {
 
             if((post.actName.toLowerCase()).includes(search.toLowerCase())) {
-                addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+                //addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+                if(post.userList.includes(currUser)) {
+                  addNewPost(post, true);
+                }
+                else {
+                  addNewPost(post, false);
+                }
                 num++;
             }
           });
@@ -411,7 +447,13 @@
           }
 
           temp_posts.forEach(function(post) {
-              addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+            if(post.userList.includes(currUser)) {
+              addNewPost(post, true);
+            }
+            else {
+              addNewPost(post, false);
+            }
+            //  addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
           });
 
       }

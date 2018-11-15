@@ -15,6 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <script>
+      // check if user is logged in
+      if (localStorage.getItem('currUser') == null ||
+        localStorage.getItem('currUser') == "") {
+          document.location.replace("./login.html");
+      }
+    </script>
+
+    <script>
       function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
       }

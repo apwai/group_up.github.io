@@ -6,7 +6,7 @@ var accountInfo = {'username': 'fan123',
                    'index': 1};
 
 //Fake  database
-var Account= [
+var accounts= [
   {'username': 'soccer123', 'password': 'ball123', 'event1': 'Soccer Class', 'event2': 'Gymming Kids','index': 2},
   {'username': 'art123', 'password': 'class123', 'event1': 'Drawing', 'event2': 'Wine and Dine','index': 3},
   {'username': 'baller123', 'password': 'game123', 'event1': 'Beginner Yoga', 'event2': 'Wine and Dine','index': 4},
