@@ -32,40 +32,40 @@ var fakePosts = [
 ];
 
 //Call this function when page loads
-$(document).ready(function() {
-  console.log('hello world');
+// $(document).ready(function() {
+//   console.log('hello world');
+//
+//   //Compile the template
+//   var source = $("#events-template").html();
+//   var template = Handlebars.compile(source)
+//   var parentDiv = $("#templatedEvents");
+//
+//   //Simple template
+//
+//   // var html = template(eventInfo);
+//   // console.log(html);
+//   // parentDiv.append(html);
+//
+//   //iterate through  info
+//   for (var i= 0; i < fakePosts.length; i++) {
+//     var curData= fakePosts[i];
+//     var curHtml = template(curData);
+//     parentDiv.append(curHtml);
+//   }
+// });
 
-  //Compile the template
-  var source = $("#events-template").html();
-  var template = Handlebars.compile(source)
-  var parentDiv = $("#templatedEvents");
 
-  //Simple template
-
-  // var html = template(eventInfo);
-  // console.log(html);
-  // parentDiv.append(html);
-
-  //iterate through  info
-  for (var i= 0; i < fakePosts.length; i++) {
-    var curData= fakePosts[i];
-    var curHtml = template(curData);
-    parentDiv.append(curHtml);
-  }
-});
-
-
-function handleEventClick(far, eventId) {
-  console.log('run');
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-}
-
-var modal = document.querySelector(".modal");
-var events = document.querySelector(".events");
-var closeButton = document.querySelector(".close-button");
-
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+// function handleEventClick(far, eventId) {
+//   console.log('run');
+//   $('#myModal').on('shown.bs.modal', function () {
+//     $('#myInput').trigger('focus')
+//   })
+// }
+//
+// var modal = document.querySelector(".modal");
+// var events = document.querySelector(".events");
+// var closeButton = document.querySelector(".close-button");
+//
+// $('#myModal').on('shown.bs.modal', function () {
+//   $('#myInput').trigger('focus')
+// })
