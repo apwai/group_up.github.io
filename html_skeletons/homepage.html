@@ -102,11 +102,18 @@
         document.getElementById("mySidenav").style.width = "0";
       }
 
-      function toProfile() {
+      function toProfile(clickedUser) {
+        alert("here");
           //we will need to modify this method later when we get more users in the system - VK
-          location.href = './profile.html';
+          var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+          users.forEach(function(user) {
+            if (user.username.value == clickedUser) {
+              localStorage.setItem('clickedProfile', user);
+              alert(localStorage.getItem('clickedProfile'));
+              location.href = './profile.html';
+            }
+          });
       }
-
     //  function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined, checkJoin) {
 
     function addNewPost(post, checkJoin) {
@@ -124,7 +131,7 @@
         // get list of users for event
         listOfAttendees = "";
         userList.forEach(function(user) {
-          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile()'> "+ user+ "</button>" + ' ';
+          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + user.value + ")'> "+ user+ "</button>" + ' ';
         });
 
 
@@ -188,7 +195,7 @@
               + "</div>"
             +    "<div class='modal-footer'>"
             +      buttonString
-            +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
+            +      "<button type='button' class='btn btn-info' onclick='toProfile(" +post.creator.value+")'>See Host Profle</button>"
             +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
             + "<br>"
             +    "</div>"
