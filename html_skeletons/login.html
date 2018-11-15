@@ -28,6 +28,7 @@
 
           var valid = false;
           var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+            
 
           users.forEach(function(user) {
             if (username.value == user.username && password.value == user.password) {
