@@ -36,9 +36,20 @@
           </div>
       </div>
 
+        <div class="custom-select">
+          <label>Sort by:
+            <select onchange="filter(event)">
+              <option value="0">Most Recent Posts</option>
+              <option value="1">Earliest Start Time</option>
+              <option value="2">Latest Start Time</option>
+              <option value="3">Fullest</option>
+              <option value="4">Emptiest</option>
+            </select>
+          </label>
+          <button class = "reset" onclick = "window.location.href = './myposts.html'">Clear Filtering</button>
+        </div>
 
       <center>
-
       <!-- THE HEADER OF THE PAGE -->
       <h1>My Events</h1>
 
@@ -84,7 +95,6 @@
       <script src = "https://code.jquery.com/jquery.js"> </script>
       <script src = "scripts/bootstrap.min.js"> </script>
       <script src = "scripts/handlebars-v4.0.11.js"> </script> -->
-
         <table id="posts">
             <br>
             <br>
