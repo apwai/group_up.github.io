@@ -151,6 +151,7 @@
         id = post.id;
         numJoined = post.numJoined;
         userList = post.userList;
+        creator = post.creator;
 
         // get list of users for event
         listOfAttendees = "";
@@ -220,7 +221,7 @@
               + "</div>"
             +    "<div class='modal-footer'>"
             +      buttonString
-            +      "<button type='button' class='btn btn-info' onclick='toProfile(" +post.creator.value+")'>See Host Profle</button>"
+            +      "<button type='button' class='btn btn-info' onclick='toProfile(" + 'creator' +")'>See Host Profile</button>"
             +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
             + "<br>"
             +    "</div>"
