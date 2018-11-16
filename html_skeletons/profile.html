@@ -55,27 +55,29 @@
         </div>
       </div>
 
-      <div class = "container" class="w3-card-4">
-        <img style="float: right;" id= "profilePic" src="bobchen.jpeg" alt="Person">
-      </div>
+      <!--<div class = "container" class="w3-card-4">
+        <img style="float: right;" id= "profilePic" src="default_profile.png" alt="Person">
+      </div>-->
+        <center>
+            <img style="width: 200px; margin-top: 100px" src="default_profile.png" >
+            <div id = "profileName"> </div>
+            <div id = "firstName"> </div>
+            <div id = "lastName"> </div>
 
-        <div id= "profileName">  </div>
-        <div id = "firstName"> </div>
-        <div id = "lastName"> </div>
-
-        <div class = "container">
-          <img id = "contactFBicon" src = "facebookIcon.png">  <br>
-      <!--    <img id = "contactIcon" src= "emailIcon.png"> MAIL: bobchen234@gmail.com <br> -->
-          <p id= "interests"> Interests: basketball, boxing, tennis. </p> <br>
-          <!-- <p id= "intro"> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p> -->
-        </div>
-
+            <!--<img id = "contactFBicon" src = "facebookIcon.png">-->
+            <div id= "fbURL"> </div>
+          <!--    <img id = "contactIcon" src= "emailIcon.png"> MAIL: bobchen234@gmail.com <br> -->
+            <div id= "interests"> </div>
+              <!-- <p id= "intro"> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p> -->
+        </center>
 
       <script>
-      document.getElementById("profileName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileUsername') + "</h1>";
-      document.getElementById("firstName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileFirstName') + "</h1>";
-      document.getElementById("lastName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileLastName') + "</h1>";
+      document.getElementById("profileName").innerHTML = "<h2>" + localStorage.getItem('clickedProfileUsername') + "</h2>";
+      document.getElementById("firstName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileFirstName') + " " +
+         localStorage.getItem('clickedProfileLastName') + "</h1>";
       //document.getElementById("contactFBicon").innerHTML = "<p>" + localStorage.getItem('clickedProfileFB') + "</p>";
+      document.getElementById("fbURL").innerHTML = "<h4>" + localStorage.getItem('clickedProfileFB') + "</h4>";
+      document.getElementById("interests").innerHTML = "<h4> Interests: " + localStorage.getItem('clickedProfileActivities') + "</h4>";
 
 
       </script>

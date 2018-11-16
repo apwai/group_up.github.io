@@ -29,12 +29,14 @@
         currentUser = localStorage.getItem('currUser');
         users.forEach(function(user) {
 
-          if (user.username == currUser) {
+          if (user.username == currentUser) {
             localStorage.setItem('clickedProfileUsername', user.username);
             localStorage.setItem('clickedProfileFirstName', user.firstname);
             localStorage.setItem('clickedProfileLastName', user.lastname);
             localStorage.setItem('clickedProfileFB', user.fbURL);
             localStorage.setItem('clickedProfilePP', user.profilesrc);
+            localStorage.setItem('clickedProfileActivities', user.activities);
+
 
           }
         });
@@ -55,7 +57,6 @@
                     } else {
                       post.userList.splice(count, count);
                     }
-                    alert(post.userList);
                   }
                   count += 1;
                 });
@@ -131,6 +132,8 @@
               localStorage.setItem('clickedProfileFB', user.fbURL);
               localStorage.setItem('clickedProfilePP', user.profilesrc);
         //      localStorage.setItem('clickedProfileEmail', user.));
+                localStorage.setItem('clickedProfileActivities', user.activities);
+
 
 
               location.href = './profile.html';
@@ -157,7 +160,7 @@
         listOfAttendees = "";
         userList.forEach(function(user) {
 
-          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + 'user' + ")'> "+ user + "</button>" + ' ';
+          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + "\"" + user + "\"" + ")'> "+ user + "</button>" + ' ';
         });
 
 

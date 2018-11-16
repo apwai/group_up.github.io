@@ -65,7 +65,8 @@
 
               var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
 
-              users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activites: activities});
+
+              users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activities: activities.value});
               localStorage.setItem('allUsers', JSON.stringify(users));
                 
               localStorage.setItem('currUser', username.value);
