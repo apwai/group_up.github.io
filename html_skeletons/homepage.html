@@ -125,7 +125,8 @@
 
           var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
           users.forEach(function(user) {
-            alert("test" + user.username);
+<<<<<<< HEAD
+
             if (user.username == clickedUser) {
               localStorage.setItem('clickedProfileUsername', user.username);
               localStorage.setItem('clickedProfileFirstName', user.firstname);
@@ -136,6 +137,10 @@
 
               var u = localStorage.getItem('clickedProfile');
 
+=======
+            if (user.username.value == clickedUser) {
+              localStorage.setItem('clickedProfile', user);
+>>>>>>> db533d02df1c77275ee1f92097993dde55dfa032
               location.href = './profile.html';
             }
           });
