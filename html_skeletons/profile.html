@@ -67,17 +67,15 @@
           <img id = "contactFBicon" src = "facebookIcon.png">  <br>
       <!--    <img id = "contactIcon" src= "emailIcon.png"> MAIL: bobchen234@gmail.com <br> -->
           <p id= "interests"> Interests: basketball, boxing, tennis. </p> <br>
-          <p id= "intro"> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p>
+          <!-- <p id= "intro"> Hi! I'm Bob and I'm from Southern California. I'd love to meet new people and try new activities </p> -->
         </div>
 
 
-      </div>
       <script>
-      alert(localStorage.getItem('clickedProfile'));
-      document.getElementById("profileName").innerHTML = "<h1>" + localStorage.getItem('clickedProfile') + "</h1>";
+      document.getElementById("profileName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileUsername') + "</h1>";
       document.getElementById("firstName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileFirstName') + "</h1>";
       document.getElementById("lastName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileLastName') + "</h1>";
-    //  document.getElementById("contactFBicon").innerHTML = "<p>" + localStorage.getItem('clickedProfileFB') + "</p>";
+      //document.getElementById("contactFBicon").innerHTML = "<p>" + localStorage.getItem('clickedProfileFB') + "</p>";
 
 
       </script>
