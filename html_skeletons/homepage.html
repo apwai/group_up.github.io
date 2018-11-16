@@ -24,6 +24,24 @@
       }
     </script>
     <script>
+      function toMyProfile() {
+        var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        currentUser = localStorage.getItem('currUser');
+        users.forEach(function(user) {
+
+          if (user.username == currUser) {
+            localStorage.setItem('clickedProfileUsername', user.username);
+            localStorage.setItem('clickedProfileFirstName', user.firstname);
+            localStorage.setItem('clickedProfileLastName', user.lastname);
+            localStorage.setItem('clickedProfileFB', user.fbURL);
+            localStorage.setItem('clickedProfilePP', user.profilesrc);
+      //      localStorage.setItem('clickedProfileEmail', user.));
+
+            var u = localStorage.getItem('clickedProfile');
+          }
+        });
+
+      }
       function unjoinEvent(id) {
         //alert("test unjoin");
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
@@ -78,7 +96,7 @@
 
       }
       //use this if you want to clear all the data, make sure to comment it out again after one run - VK
-      //localStorage.clear();
+      //localStorage.clear()
 
       function checkJoined(id) {
         posts = JSON.parse(localStorage.getItem('posts') || "[]");
@@ -103,13 +121,21 @@
       }
 
       function toProfile(clickedUser) {
-        alert("here");
           //we will need to modify this method later when we get more users in the system - VK
+
           var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
           users.forEach(function(user) {
-            if (user.username.value == clickedUser) {
-              localStorage.setItem('clickedProfile', user);
-              alert(localStorage.getItem('clickedProfile'));
+            alert("test" + user.username);
+            if (user.username == clickedUser) {
+              localStorage.setItem('clickedProfileUsername', user.username);
+              localStorage.setItem('clickedProfileFirstName', user.firstname);
+              localStorage.setItem('clickedProfileLastName', user.lastname);
+              localStorage.setItem('clickedProfileFB', user.fbURL);
+              localStorage.setItem('clickedProfilePP', user.profilesrc);
+        //      localStorage.setItem('clickedProfileEmail', user.));
+
+              var u = localStorage.getItem('clickedProfile');
+
               location.href = './profile.html';
             }
           });
@@ -131,7 +157,9 @@
         // get list of users for event
         listOfAttendees = "";
         userList.forEach(function(user) {
-          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + user.value + ")'> "+ user+ "</button>" + ' ';
+
+          listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + 'user' + ")'> "+ user + "</button>" + ' ';
+          alert(user);
         });
 
 
@@ -472,7 +500,7 @@
     <!--  for the side menu -->
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="./profile.html">My Profile</a>
+      <a href="./profile.html" onclick="toMyProfile()" >My Profile</a>
       <a href="./myposts.html">My Events</a>
       <a href= "./login.html"> Log Out </a>
     </div>
