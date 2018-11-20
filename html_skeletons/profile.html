@@ -77,7 +77,13 @@
          localStorage.getItem('clickedProfileLastName') + "</h1>";
       //document.getElementById("contactFBicon").innerHTML = "<p>" + localStorage.getItem('clickedProfileFB') + "</p>";
       document.getElementById("fbURL").innerHTML = "<h4>" + localStorage.getItem('clickedProfileFB') + "</h4>";
-      document.getElementById("interests").innerHTML = "<h4> Interests: " + localStorage.getItem('clickedProfileActivities') + "</h4>";
+
+      // the clicked user has a bio section
+
+      if (localStorage.getItem ('clickedProfileActivities') != 'undefined') {
+          document.getElementById("interests").innerHTML = "<h4> Interests: " + localStorage.getItem('clickedProfileActivities') + "</h4>";
+      }
+
 
 
       </script>

@@ -24,11 +24,11 @@
 
           var valid = false;
           var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
-            
+
 
           users.forEach(function(user) {
             if (username.value == user.username && password.value == user.password) {
-                
+
               user = document.getElementById("username");
               localStorage.setItem('currUser', user.value);
               valid = true;
@@ -68,11 +68,11 @@
 
               users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activities: activities.value});
               localStorage.setItem('allUsers', JSON.stringify(users));
-                
+
               localStorage.setItem('currUser', username.value);
 
           }
-            
+
 
         }
 
@@ -87,14 +87,16 @@
         <br />
         <div class="form">
          <form class="register-form" action="./homepage.html">
-            <input type="text" placeholder="first name" id= "firstname" required><br>
-            <input type="text" placeholder="last name" id="lastname" required><br>
-            <input type="text" placeholder="username" id="newusername" required><br>
-            <input type="password" placeholder="password" id="newpassword" required><br>
-            <input type="password" placeholder = "confirm password" required><br>
+            <input type="text" placeholder="first name *" id= "firstname" required><br>
+            <input type="text" placeholder="last name *" id="lastname" required><br>
+            <input type="text" placeholder="username *" id="newusername" required><br>
+            <input type="password" placeholder="password *" id="newpassword" required><br>
+            <input type="password" placeholder = "confirm password *" required><br>
             <input type="text" placeholder = "facebook URL" id="fbURL"><br>
             Upload a profile picture <input type="file" name="pic" accept="image/*" id="profilepic"> <br>
-            <textarea placeholder="List some of the activities you are interested in: " name="myinfo" cols="40" rows="5" id="activities"></textarea> <br>
+            <textarea placeholder="Tell others a bit about yourself and what activities you're interested in!
+
+Example: Ex: Hi! I'm a student at UCSD and I love playing basketball, drawing, and meeting new people!" name="myinfo" cols="40" rows="8" id="activities"></textarea> <br>
             <button onclick="addUser()">create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form>

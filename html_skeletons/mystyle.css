@@ -1,11 +1,16 @@
+body {
+
+}
 .eventsButton {
+    background: rgb(76,126,180);
+    background: linear-gradient(180deg, rgba(76,126,180,1) 13%, rgba(38,129,195,1) 57%, rgba(16,158,186,1) 100%);
     display: inline-block;
     transition-duration: .25s;
     text-align: center;
     text-decoration: none !important;
-    font-family: "HelveticaNeue";
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: bold;
-    color: black;
+    color: white;
      font-size: 24px;
      height: 200px;
      width: 300px;
@@ -34,10 +39,10 @@
 }
  .eventsButton .eventInfo {
    font-weight: normal;
-   font-family: "HelveticaNeue";
+   font-family: 'Nunito Sans', sans-serif;
    font-style: oblique;
    font-size: 16px;
-   color: gray;
+   color: white;
  }
 
 .eventPopup {
