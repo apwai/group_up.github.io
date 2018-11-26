@@ -2,26 +2,58 @@
   <title> Help Page </title>
   <head>
   </head>
-    <style>
-      .helpheader {
-        font-size: 50px;
-      }
-    </style>
-  <body>
-    <h1> Hi! Welcome to Group Up!  </h1>
-      <h2 class= "helpheader"> Getting Started <h2>
-      <p id= instructions> To get started, join an event you see on the home page! If you can't find one you're interested in, create your own event! </p>
+  <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-      <h3 class="question"> Seeing the events you have joined: </h3>
+  <script>
+
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+  <body>
+    <div class="topnav">
+
+        <div class="search-container-new">
+
+          <!--  <form> -->
+              <span style="font-size:30px;cursor:pointer;color:white; float: left;" onclick="openNav()">&#9776;</span>
+              <!--<input type="text" placeholder="Search..." name="search">
+              <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
+              <button formaction = "./newpost.html" value="else"> Create Event </button>
+             <button formaction = "./messages.html" value="else"> Messages </button> -->
+              <div class="pageTitle" style = ""> Welcome to Group Up </div>
+      <!--        <button class="btnhome" formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button> -->
+      <button class="btnhome" onclick= "location.href='./homepage.html'"><i class="fa fa-home"></i></button>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="./profile.html">My Profile</a>
+    <a href="./myposts.html">My Events</a>
+    <a href="./login.html">Logout</a>
+  </div>
+      <h3> Getting Started </h3>
+      <p> To get started, join an event you see on the home page! If you can't find one you're interested in, create your own event! </p>
+
+      <h3 class="question"> How can I see the events I joined? </h3>
       <p> Click on the dropdown menu and click on "My Events" to view events you have already joined! Get connected with other participants also! </p>
       <h3 class= "question"> How to create an event? </h3>
-      <p> On the top navigation, click on create an event! All people allowed to
-      <h3 class= "question"> Want to see the profile of people who have joined a certain event? <h3>
-      <p> To see the profile, go to the Event and under "List of Attendees" you'll be able to click on the users who have joined and see their profile! </p>
+      <p> On the top navigation, click on create an event.
+      <h3 class= "question"> Want to see the profile of people who have joined a certain event? </h3>
+      <p> To see the profile, go to the Event and under "List of Attendees" you'll be able to click on the users who have joined and see their profile. </p>
 
-      <h3 class= "question"> What kind of events can I host </h3>
+      <h3 class= "question"> What kind of events can I host? </h3>
       <p> It's mainly up to you! Host an event that is interesting to you! </p>
       <h3> Are you a company interested in hosting an event? </h3>
       <p> Add your website in the description so people can read more about it! </p>
+      <h3>Have any feedback or questions? </h3>
+      <p> Contact us via email at <b>GroupUp@fakeemail.com</b> </p>
   </body>
 </html>

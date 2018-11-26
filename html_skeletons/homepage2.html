@@ -282,6 +282,15 @@
             addNewPost(post, false);
           }
         });
+
+        if (posts.length == 0) {
+            var table = document.getElementById("posts");
+            var row = table.insertRow(0);
+
+            var cell = row.insertCell(0);
+
+            cell.innerHTML = "<h3>Whoops. There are currently no events.</h3>";
+        }
       }
 
       function strcmp(a, b) {
@@ -522,12 +531,11 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
+              More
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="./profile.html" onclick="toMyProfile()">My Profile</a>
-                <a class="dropdown-item" href="./myposts.html">My Events</a>
-                <a class="dropdown-item" href="./helppage.html">Help Page</a>
+                <a class="dropdown-item" href="./helppage.html">Help</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="./login.html">Log Out</a>
               </div>
@@ -541,7 +549,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchResults()">Search Events</button>
 
           </form>
-            
+
         </div>
       </nav>
       <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
@@ -558,10 +566,10 @@
             <option value="4">Emptiest</option>
           </select>
         </label>
-        <button class = "reset" onclick = "window.location.href = './homepage2.html'">Clear Filtering</button>
+        <button class = "reset" onclick = "window.location.href = './homepage2.html'">Clear Sort & Search</button>
       </div>
 
-      <h2 id=dashboardtext> Events </h2>
+      <h2 id=dashboardtext> Current Events </h2>
 
     <center>
 
