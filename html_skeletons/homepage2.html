@@ -204,8 +204,8 @@
             + "<div class='modal-dialog' role='document'>"
             + "<div class='modal-content'>"
             +    "<div class='modal-header'>"
-            +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
             +      "<h5 class='modal-title'>" + actName + "</h5>"
+            +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
             +    "</div>"
             +    "<div class='modal-body'>"
             + "<div class = 'popupInfo'>"
@@ -230,7 +230,6 @@
             +    "<div class='modal-footer'>"
             +      buttonString
             +      "<button type='button' class='btn btn-info' onclick='toProfile(" + 'creator' +")'>See Host Profile</button>"
-            +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
             + "<br>"
             +    "</div>"
             +  "</div>"
@@ -537,19 +536,19 @@
 
             <button class="btn btn-primary" onclick="location.href='./newpost.html'" > Create Event </button>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Events</button>
+          <form class="form-inline my-2 my-lg-0" onsubmit = "return false;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" name="search" >
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchResults()">Search Events</button>
 
           </form>
-
+            
         </div>
       </nav>
       <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
       <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
       <button onclick = "window.location.href = './settings.html'"> Settings </button>-->
 
-      <div class="custom-select">
+      <div id="custom-select">
         <label>Sort by:
           <select onchange="filter(event)">
             <option value="0">Most Recent Posts</option>

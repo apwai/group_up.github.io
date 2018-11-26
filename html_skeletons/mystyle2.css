@@ -311,18 +311,18 @@ body {
 }
 
 /* for the filter */
-.custom-select {
+#custom-select {
     padding-left: 100px;
     padding-top: 10px;
     padding-bottom: 15px;
 }
 
-.custom-select label {
+#custom-select label {
   font-family: "HelveticaNeue";
   font-size: 16px;
 }
 
-.custom-select select {
+#custom-select select {
     font-family: "HelveticaNeue";
     font-size: 16px;
     width: 200px;
@@ -330,7 +330,7 @@ body {
     background-color: white;
 }
 
-.custom-select .reset {
+#custom-select .reset {
     /*border-style: 1px solid #80bfff; */
     background-color: white;
     color: black;
@@ -341,7 +341,7 @@ body {
     cursor: pointer;
 }
 
-.custom-select .reset:hover {
+#custom-select .reset:hover {
     background-color: #80bfff;
 }
 
