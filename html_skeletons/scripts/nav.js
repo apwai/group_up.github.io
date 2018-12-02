@@ -56,77 +56,111 @@ function checkJoined(id) {
   });
 }
 
-function addNewPost(actName, startDate, endDate, numPeople, address, description, id, numJoined, checkJoin) {
-  var table = document.getElementById("posts");
-  var length = 3;
-  if (table.rows.length > 0) {
-      length = table.rows[table.rows.length - 1].childElementCount;
-  }
+function addNewPost(post, checkJoin) {
 
-  if (length == 3) {
-      table.insertRow(-1);
-      table.insertRow(-1);
-      length = 0;
-  }
+    actName = post.actName;
+    startDate = post.startTime;
+    endDate = post.endTime;
+    numPeople = post.numPeople;
+    address = post.address;
+    description = post.description;
+    id = post.id;
+    numJoined = post.numJoined;
+    userList = post.userList;
+    creator = post.creator;
 
-  var allRows = table.getElementsByTagName('tr');
-  var numRows = allRows.length;
+    // get list of users for event
+    listOfAttendees = "";
+    userList.forEach(function(user) {
 
-  var cell = allRows[numRows - 1].insertCell(length);
+      listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + "\"" + user + "\"" + ")'> "+ user + "</button>" + ' ';
+    });
 
-  var index = parseInt(localStorage.getItem('numPosts'));
 
-  numPosts = index + 1;
-  posts = JSON.parse(localStorage.getItem('posts') || "[]");
-
-  cell.width = 225;
-  cell.height = 225;
-    if (checkJoin == true) {
-      buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='unjoinEvent(" + id + ")'>Unjoin Event</button>"
+    var table = document.getElementById("posts");
+    var length = 3;
+    if (table.rows.length > 0) {
+        length = table.rows[table.rows.length - 1].childElementCount;
     }
 
-    else {
-      buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='joinEvent(" + id + ")'>Join Event</button>"
+    if (length == 3) {
+        table.insertRow(-1);
+        table.insertRow(-1);
+        length = 0;
     }
-    cell.innerHTML = "<div id = 'postNumber" + index +  "' class='modal fade' role='dialog'>"
-      + "<div class='modal-dialog' role='document'>"
-      + "<div class='modal-content'>"
-      +    "<div class='modal-header'>"
-      +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
-      +      "<h5 class='modal-title'>" + actName + "</h5>"
-      +    "</div>"
-      +    "<div class='modal-body'>"
-      + "<div class = 'popupInfo'>"
-      + startDate + " - " + endDate + "<br/>"
-      +  address + "<br/>"
-      + numJoined + "/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
-      + description + "<br/> </div>"
-      +    "</div>"
-      +    "<div class='modal-footer'>"
-      +      buttonString
-      +      "<button type='button' class='btn btn-info' onclick='toProfile()'>See Host Profle</button>"
-      +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
-      +    "</div>"
-      +  "</div>"
+
+    var allRows = table.getElementsByTagName('tr');
+    var numRows = allRows.length;
+
+    var cell = allRows[numRows - 1].insertCell(length);
+
+    var index = parseInt(localStorage.getItem('numPosts'));
+
+    numPosts = index + 1;
+    posts = JSON.parse(localStorage.getItem('posts') || "[]");
+
+    cell.width = 225;
+    cell.height = 225;
+      if (checkJoin == true) {
+        buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='unjoinEvent(" + id + ")'>Unjoin Event</button>"
+      }
+
+      else {
+        buttonString = "<button type='button' class='btn btn-primary' id= 'joinButton' data-dismiss='modal' onclick='joinEvent(" + id + ")'>Join Event</button>"
+      }
+      cell.innerHTML = "<div id = 'postNumber" + index +  "' class='modal fade' role='dialog'>"
+        + "<div class='modal-dialog' role='document'>"
+        + "<div class='modal-content'>"
+        +    "<div class='modal-header'>"
+        +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
+        +      "<h5 class='modal-title'>" + actName + "</h5>"
+        +    "</div>"
+        +    "<div class='modal-body'>"
+        + "<div class = 'popupInfo'>"
+        + startDate + " - " + endDate + "<br/>"
+        +  address + "<br/>"
+        + numJoined + "/" + numPeople + " spots filled<br/>" //will need to fix this when changing how many people have joined
+        + description + "<br/> </div>"
+        +    "</div>"
+        /* start extra info */
+          +      "<div class='panel-group'>"
+          +         "<div class='panel panel-default'>"
+          +           "<div class='panel-heading'>"
+          +             "<h4 class='panel-title'>"
+          + "<a data-toggle='collapse' href='#collapse" + id +"'> See List of Attendees </a>"
+          + "</h4>"
+          + "</div>"
+          + "<div id='collapse" + id + "' class='panel-collapse collapse'>"
+          +   "<div class='panel-body'> "+ listOfAttendees + "  </div>"
+          + "</div>"
+          + "</div>"
+          + "</div>"
+        +    "<div class='modal-footer'>"
+        +      buttonString
+        +      "<button type='button' class='btn btn-info' onclick='toProfile(" + 'creator' +")'>See Host Profile</button>"
+        +      "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+        + "<br>"
+        +    "</div>"
+        +  "</div>"
+        + "</div>"
+        + "</div>"
+
+      /* the event buttons */
+      + "<button onclick = 'checkJoined(" + id + ")' class = 'eventsButton' data-toggle='modal' data-target = '#postNumber" + index + "'>"
+      + actName + "<br/>"
+      + "<div class ='eventInfo'>"
+      + address + "<br/>"
+      + startDate + "<br/> "
       + "</div>"
-      + "</div>"
-
-    /* the event buttons */
-    + "<button onclick = 'checkJoined(" + id + ")' class = 'eventsButton' data-toggle='modal' data-target = '#postNumber" + index + "'>"
-    + actName + "<br/>"
-    + "<div class ='eventInfo'>"
-    + address + "<br/>"
-    + startDate + "<br/> "
-    + "</div>"
-    + "</button>";
+      + "</button>";
 
 
-  /*posts = JSON.parse(localStorage.getItem('posts') || "[]");
+    /*posts = JSON.parse(localStorage.getItem('posts') || "[]");
 
-  posts.push({id: id, actName: actName, startTime: startDate, endTime: endDate, address: address, numPeople: numPeople, numJoined: 1, description: description, creator: creator, userList: [creator]});*/
-  localStorage.setItem('numPosts', numPosts);
+    posts.push({id: id, actName: actName, startTime: startDate, endTime: endDate, address: address, numPeople: numPeople, numJoined: 1, description: description, creator: creator, userList: [creator]});*/
+    localStorage.setItem('numPosts', numPosts);
 
-}
+  }
 
 function getEvents() {
   //FIND THE POSTS THAT THEY CREATE AND THE POSTS THEY JOIN
@@ -142,7 +176,7 @@ function populate() {
       posts.forEach(function(post) {
         if (post.userList.includes(localStorage.getItem('currUser'))) {
           hasEvent = true;
-          addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
+          addNewPost(post, true);
         }
 
 
