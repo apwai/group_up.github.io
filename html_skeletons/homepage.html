@@ -26,6 +26,7 @@
     <script>
       function toMyProfile() {
         var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
         currentUser = localStorage.getItem('currUser');
         users.forEach(function(user) {
 
@@ -34,8 +35,8 @@
             localStorage.setItem('clickedProfileFirstName', user.firstname);
             localStorage.setItem('clickedProfileLastName', user.lastname);
             localStorage.setItem('clickedProfileFB', user.fbURL);
-            localStorage.setItem('clickedProfilePP', user.profilesrc);
             localStorage.setItem('clickedProfileActivities', user.activities);
+              localStorage.setItem('clickedProfileImage', user.profilesrc);
 
 
           }
@@ -130,7 +131,10 @@
               localStorage.setItem('clickedProfileFirstName', user.firstname);
               localStorage.setItem('clickedProfileLastName', user.lastname);
               localStorage.setItem('clickedProfileFB', user.fbURL);
-              localStorage.setItem('clickedProfilePP', user.profilesrc);
+
+
+                localStorage.setItem('clickedProfileImage', user.profilesrc);
+
         //      localStorage.setItem('clickedProfileEmail', user.));
                 localStorage.setItem('clickedProfileActivities', user.activities);
 

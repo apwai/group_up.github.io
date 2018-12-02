@@ -11,6 +11,12 @@
 
 
 <script>
+    
+    
+    var profilepic;
+    profilepic = new Image()
+    profilepic.src = './default_profile.jpg'
+    
   $(document).ready(function() {
     $('.message a').click(function(){
       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -39,7 +45,18 @@
           }
           return valid;
         }
-
+    
+    function previewFile() {
+          profilepic = document.querySelector('img');
+          var file    = document.querySelector('input[type=file]').files[0];
+          var reader  = new FileReader();
+          reader.addEventListener("load", function () {
+            profilepic.src = reader.result;
+          }, false);
+          if (file) {
+            reader.readAsDataURL(file);
+          }
+    }
         //localStorage.clear()
         function addUser() {
             var firstname = document.getElementById("firstname");
@@ -47,8 +64,8 @@
             var username = document.getElementById("newusername");
             var password = document.getElementById("newpassword");
             var fbURL = document.getElementById("fbURL");
-            var profilesrc = document.getElementById("profilepic");
             var activities = document.getElementById("activities");
+
 
             //alert(firstname.value)
             //alert(lastname.value)
@@ -66,7 +83,7 @@
               var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
 
 
-              users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilesrc.value, activities: activities.value});
+              users.push({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, fbURL: fbURL.value, profilesrc: profilepic.src, activities: activities.value});
               localStorage.setItem('allUsers', JSON.stringify(users));
 
               localStorage.setItem('currUser', username.value);
@@ -93,7 +110,9 @@
             <input type="password" placeholder="password *" id="newpassword" required><br>
             <input type="password" placeholder = "confirm password *" required><br>
             <input type="text" placeholder = "facebook URL" id="fbURL"><br>
-            Upload a profile picture <input type="file" name="pic" accept="image/*" id="profilepic"> <br>
+            Upload a profile picture <input type="file" name="pic" accept="image/*" id="profilepic" onchange="previewFile()"> <br>
+             
+        <center><img src="./default_profile.jpg" height="100" alt="Image preview"></center><br/>
             <textarea placeholder="Tell others a bit about yourself and what activities you're interested in!
 
 Example: Ex: Hi! I'm a student at UCSD and I love playing basketball, drawing, and meeting new people!" name="myinfo" cols="40" rows="8" id="activities"></textarea> <br>
@@ -101,7 +120,7 @@ Example: Ex: Hi! I'm a student at UCSD and I love playing basketball, drawing, a
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form>
 
-          <form class="login-form" action = "./homepage2.html" onsubmit="return validate()">
+          <form class="login-form" action = "./homepage.html" onsubmit="return validate()">
             <input type="text" placeholder="username" id="username" required/>
             <input type="password" placeholder="password" id="password" required/>
             <button type="submit">login</button>

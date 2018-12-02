@@ -14,8 +14,7 @@
             localStorage.getItem('currUser') == "") {
               document.location.replace("./login.html");
           }
-        </script>
-        <script>
+
           function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
           }
@@ -23,13 +22,21 @@
           function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
           }
+            
+            
+        function showProfile() {
+              prof = document.querySelector('img');
+
+               prof.src = localStorage.getItem('clickedProfileImage');
+
+        }
         </script>
 
 
 
     </head>
 
-    <body>
+    <body onload="showProfile()">
       <!--  for the side menu -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -59,7 +66,7 @@
         <img style="float: right;" id= "profilePic" src="default_profile.png" alt="Person">
       </div>-->
         <center>
-            <img style="width: 200px; margin-top: 100px" src="default_profile.png" >
+            <img style='width: 200px; margin-top: 100px' id="profileImage" src="">
             <div id = "profileName"> </div>
             <div id = "firstName"> </div>
             <div id = "lastName"> </div>
@@ -72,12 +79,15 @@
         </center>
 
       <script>
+
+          
+
+      //document.getElementById("profileImage").innerHTML = "<img style='width: 200px; margin-top: 100px' src=' " + source + "'>";
       document.getElementById("profileName").innerHTML = "<h2>" + localStorage.getItem('clickedProfileUsername') + "</h2>";
       document.getElementById("firstName").innerHTML = "<h1>" + localStorage.getItem('clickedProfileFirstName') + " " +
          localStorage.getItem('clickedProfileLastName') + "</h1>";
       //document.getElementById("contactFBicon").innerHTML = "<p>" + localStorage.getItem('clickedProfileFB') + "</p>";
       document.getElementById("fbURL").innerHTML = "<h4>" + localStorage.getItem('clickedProfileFB') + "</h4>";
-
       // the clicked user has a bio section
 
       if (localStorage.getItem ('clickedProfileActivities') != 'undefined') {
