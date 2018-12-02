@@ -6,9 +6,30 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-function toProfile() {
-  //we will need to modify this method later when we get more users in the system - VK
-  location.href = './profile.html';
+function toProfile(clickedUser) {
+    //we will need to modify this method later when we get more users in the system - VK
+
+    var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+    users.forEach(function(user) {
+
+      if (user.username == clickedUser) {
+        localStorage.setItem('clickedProfileUsername', user.username);
+        localStorage.setItem('clickedProfileFirstName', user.firstname);
+        localStorage.setItem('clickedProfileLastName', user.lastname);
+        localStorage.setItem('clickedProfileFB', user.fbURL);
+
+
+          localStorage.setItem('clickedProfileImage', user.profilesrc);
+
+  //      localStorage.setItem('clickedProfileEmail', user.));
+          localStorage.setItem('clickedProfileActivities', user.activities);
+
+
+
+        location.href = './profile.html';
+      }
+
+    });
 }
 
 function unjoinEvent(id) {
