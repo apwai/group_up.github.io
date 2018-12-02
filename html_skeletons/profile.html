@@ -30,6 +30,26 @@
                prof.src = localStorage.getItem('clickedProfileImage');
 
         }
+            
+      function toMyProfile() {
+        var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        var users = JSON.parse(localStorage.getItem("allUsers") || "[]");
+        currentUser = localStorage.getItem('currUser');
+        users.forEach(function(user) {
+
+          if (user.username == currentUser) {
+            localStorage.setItem('clickedProfileUsername', user.username);
+            localStorage.setItem('clickedProfileFirstName', user.firstname);
+            localStorage.setItem('clickedProfileLastName', user.lastname);
+            localStorage.setItem('clickedProfileFB', user.fbURL);
+            localStorage.setItem('clickedProfileActivities', user.activities);
+              localStorage.setItem('clickedProfileImage', user.profilesrc);
+
+
+          }
+        });
+
+      }
         </script>
 
 
@@ -40,7 +60,7 @@
       <!--  for the side menu -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./profile.html">My Profile</a>
+        <a href="./profile.html" onclick="toMyProfile()">My Profile</a>
         <a href="./myposts.html">My Events</a>
         <a href="./login.html"> Log Out </a>
       </div>
