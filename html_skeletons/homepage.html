@@ -3,20 +3,18 @@
     <title>Group Up</title>
 <!--    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <link rel = "stylesheet" type = "text/css" href = "mystyle2.css">
 
-
-    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-
-    <script src = "scripts/information.js"> </script>
-     <script src = "scripts/bootstrap.min.js"> </script>
-    <script src = "scripts/handlebars-v4.0.11.js"> </script>
-    <script>
+        <script src = "scripts/information.js"> </script>
+        <script src = "scripts/bootstrap.min.js"> </script>
+        <script src = "scripts/handlebars-v4.0.11.js"> </script>
+        <script>
       // check if user is logged in
       if (localStorage.getItem('currUser') == null ||
         localStorage.getItem('currUser') == "") {
@@ -159,6 +157,7 @@
         numJoined = post.numJoined;
         userList = post.userList;
         creator = post.creator;
+        category = post.category;
 
         // get list of users for event
         listOfAttendees = "";
@@ -166,6 +165,33 @@
 
           listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + "\"" + user + "\"" + ")'> "+ user + "</button>" + ' ';
         });
+
+        if(category == "Basketball") {
+          icon = "basketballicon.svg";
+        }
+
+        if(category== "Boxing") {
+          icon = "boxing.svg";
+        }
+
+        if (category== "Football") {
+          icon = "football.svg";
+        }
+
+        if (category == "Swimming") {
+          icon = "swimming-pool.png";
+        }
+
+        if (category == "Soccer") {
+          icon = "soccer.png";
+        }
+
+        if (category == "GeneralSports") {
+          icon = "balls.png";
+        }
+        if (category == "Art") {
+          icon = "painting.png";
+        }
 
 
         var table = document.getElementById("posts");
@@ -242,6 +268,7 @@
           + "<div class ='eventInfo'>"
           + address + "<br/>"
           + startDate + "<br/> "
+          + "<input type= 'image' src=" + icon + " width = '60px' height= '60px'>"
           + "</div>"
           + "</button>";
 
@@ -502,28 +529,44 @@
   </head>
   <body onload="populate()">
 
-    <!--  for the side menu -->
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="./profile.html" onclick="toMyProfile()" >My Profile</a>
-      <a href="./myposts.html">My Events</a>
-      <a href= "./login.html"> Log Out </a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light" class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="#">Group Up</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./homepage2.html"> Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./myposts.html"> My Events </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="./profile.html" onclick="toMyProfile()">My Profile</a>
+              <a class="dropdown-item" href="./helppage.html">Help</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="./login.html">Log Out</a>
+            </div>
+          </li>
 
 
-    <div class="topnav">
+          <button class="btn btn-primary" onclick="location.href='./newpost.html'" > Create Event </button>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" onsubmit = "return false;">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" name="search" >
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchResults()">Search Events</button>
 
-        <div class="search-container">
-            <form id = "searchForm" onsubmit = "return false;">
-              <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
-              <input type="text" placeholder="Search by...name...location..." id="search" name="search" >
-              <button class="btnsearch" onclick="searchResults()" type="submit"><i class="fa fa-search"></i></button>
-              <button onclick="location.href='./newpost.html'" > Create Event </button>
-      <!--        <button onclick="location.href='./messages.html'" > Messages </button> -->
-              <button class="btnhome" onclick="location.href='./homepage.html'" ><i class="fa fa-home"></i></button>
-            </form>
-        </div>
-    </div>
+        </form>
+
+      </div>
+    </nav>
 
       <!--<button onclick = "window.location.href = './profile.html'"> My Profile </button>
       <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
@@ -550,5 +593,9 @@
             <br>
         </table>
     </center>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

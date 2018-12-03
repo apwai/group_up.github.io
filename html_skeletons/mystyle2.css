@@ -358,3 +358,8 @@ body {
 #posts td {
     word-wrap:break-word;
 }
+
+#information {
+  padding-left: 30px;
+  padding-top: 20px;
+}
