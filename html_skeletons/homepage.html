@@ -229,8 +229,8 @@
             + "<div class='modal-dialog' role='document'>"
             + "<div class='modal-content'>"
             +    "<div class='modal-header'>"
-            +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
             +      "<h5 class='modal-title'>" + actName + "</h5>"
+            +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
             +    "</div>"
             +    "<div class='modal-body'>"
             + "<div class = 'popupInfo'>"
@@ -374,7 +374,7 @@
           }
 
           //latest starting time
-          else if(evt.target.value === "1") {
+          else if(evt.target.value === "2") {
               temp_posts = temp_posts.sort(function(a,b) {
 
                   var dateA = (a.startTime).split(" ")[0];
@@ -442,7 +442,7 @@
           }
 
           //earliest starting time
-          else if(evt.target.value === "2") {
+          else if(evt.target.value === "1") {
               temp_posts = temp_posts.sort(function(a,b) {
 
                   var dateA = (a.startTime).split(" ")[0];
@@ -572,7 +572,7 @@
       <button onclick = "window.location.href = './myposts.html'"> My Posts </button>
       <button onclick = "window.location.href = './settings.html'"> Settings </button>-->
 
-      <div class="custom-select">
+      <div id="custom-select">
         <label>Sort by:
           <select onchange="filter(event)">
             <option value="0">Most Recent Posts</option>
