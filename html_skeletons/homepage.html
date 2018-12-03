@@ -324,6 +324,16 @@
             addNewPost(post, false);
           }
         });
+          
+        if (posts.length == 0) {
+            var table = document.getElementById("posts");
+            var row = table.insertRow(0);
+
+            var cell = row.insertCell(0);
+
+            cell.innerHTML = "<h3>Whoops. There are currently no events.</h3>";
+        } 
+          
       }
 
       function strcmp(a, b) {
@@ -389,7 +399,7 @@
           }
 
           //latest starting time
-          else if(evt.target.value === "2") {
+          else if(evt.target.value === "1") {
               temp_posts = temp_posts.sort(function(a,b) {
 
                   var dateA = (a.startTime).split(" ")[0];
@@ -457,7 +467,7 @@
           }
 
           //earliest starting time
-          else if(evt.target.value === "1") {
+          else if(evt.target.value === "2") {
               temp_posts = temp_posts.sort(function(a,b) {
 
                   var dateA = (a.startTime).split(" ")[0];
@@ -553,7 +563,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="./homepage2.html"> Dashboard <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./homepage.html"> Dashboard <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./myposts.html"> My Events </a>
@@ -597,8 +607,10 @@
             <option value="4">Emptiest</option>
           </select>
         </label>
-        <button class = "reset" onclick = "window.location.href = './homepage.html'">Clear Filtering</button>
+        <button class = "reset" onclick = "window.location.href = './homepage.html'">Clear Sort & Search</button>
       </div>
+      
+      <h2 id=dashboardtext> Current Events </h2>
 
     <center>
 
