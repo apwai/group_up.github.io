@@ -11,12 +11,12 @@
 
 
 <script>
-    
-    
+
+
     var profilepic;
     profilepic = new Image()
     profilepic.src = './default_profile.jpg'
-    
+
   $(document).ready(function() {
     $('.message a').click(function(){
       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -45,7 +45,7 @@
           }
           return valid;
         }
-    
+
     function previewFile() {
           profilepic = document.querySelector('img');
           var file    = document.querySelector('input[type=file]').files[0];
@@ -103,7 +103,7 @@
         <center><font size = "60" style="color:white;"> <b> Group Up </b></font></center>
         <br />
         <div class="form">
-         <form class="register-form" action="./homepage.html">
+         <form class="register-form" action="./homepage2.html">
             <input type="text" placeholder="first name *" id= "firstname" required><br>
             <input type="text" placeholder="last name *" id="lastname" required><br>
             <input type="text" placeholder="username *" id="newusername" required><br>
@@ -111,7 +111,7 @@
             <input type="password" placeholder = "confirm password *" required><br>
             <input type="text" placeholder = "facebook URL" id="fbURL"><br>
             Upload a profile picture <input type="file" name="pic" accept="image/*" id="profilepic" onchange="previewFile()"> <br>
-             
+
         <center><img src="./default_profile.jpg" height="100" alt="Image preview"></center><br/>
             <textarea placeholder="Tell others a bit about yourself and what activities you're interested in!
 
@@ -120,7 +120,7 @@ Example: Ex: Hi! I'm a student at UCSD and I love playing basketball, drawing, a
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form>
 
-          <form class="login-form" action = "./homepage.html" onsubmit="return validate()">
+          <form class="login-form" action = "./homepage2.html" onsubmit="return validate()">
             <input type="text" placeholder="username" id="username" required/>
             <input type="password" placeholder="password" id="password" required/>
             <button type="submit">login</button>

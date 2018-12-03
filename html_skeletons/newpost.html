@@ -40,6 +40,10 @@
         var numPeople = document.getElementById("numPeople");
         var description = document.getElementById("description");
         var creator = localStorage.getItem('currUser');
+        var categoryName = document.getElementById("category").value;
+
+
+
 
         if (actName.value !== null && actName.value !== ""
             && startTime.value !== null && startTime.value !== ""
@@ -50,7 +54,7 @@
           n = localStorage.getItem('numPosts');
           var posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-          posts.push({id: n, actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, numJoined: 1, description: description.value, creator: creator, userList: [creator]});
+          posts.push({id: n, actName: actName.value, startTime: startTime.value, endTime: endTime.value, address: address.value, numPeople: numPeople.value, numJoined: 1, description: description.value, creator: creator, userList: [creator], category: categoryName});
           localStorage.setItem('posts', JSON.stringify(posts));
       }
     }
@@ -108,7 +112,17 @@
       </div>
       <center>
         <div class = "container">
-            <form action="./homepage.html">
+            <form action="./homepage2.html">
+              <p><strong>Category</strong></p>
+                <select id="category">
+                  <option value="GeneralSports">General Sports</option>
+                  <option value="Basketball">Basketball</option>
+                  <option value="Soccer">Soccer</option>
+                  <option value="Boxing">Boxing</option>
+                  <option value="Art">Art </option>
+                  <option value="Dance">Dance</option>
+                </select>
+
 
                 <div class="row">
                   <div class = "col-25">

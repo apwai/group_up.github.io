@@ -160,6 +160,8 @@
         numJoined = post.numJoined;
         userList = post.userList;
         creator = post.creator;
+        category = post.category;
+
 
         // get list of users for event
         listOfAttendees = "";
@@ -168,7 +170,32 @@
           listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + "\"" + user + "\"" + ")'> "+ user + "</button>" + ' ';
         });
 
+        if(category == "Basketball") {
+          icon = "basketballicon.svg";
+        }
 
+        if(category== "Boxing") {
+          icon = "boxing.svg";
+        }
+
+        if (category== "Football") {
+          icon = "football.svg";
+        }
+
+        if (category == "Swimming") {
+          icon = "swimming-pool.png";
+        }
+
+        if (category == "Soccer") {
+          icon = "soccer.png";
+        }
+
+        if (category == "GeneralSports") {
+          icon = "balls.png";
+        }
+        if (category == "Art") {
+          icon = "painting.png";
+        }
         var table = document.getElementById("posts");
         var length = 3;
         if (table.rows.length > 0) {
@@ -242,6 +269,7 @@
           + "<div class ='eventInfo'>"
           + address + "<br/>"
           + startDate + "<br/> "
+          + "<input type= 'image' src=" + icon + " width = '60px' height= '60px'>"
           + "</div>"
           + "</button>";
 
