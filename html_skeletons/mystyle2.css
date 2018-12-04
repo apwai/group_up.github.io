@@ -258,6 +258,10 @@ body {
     font-family: "HelveticaNeue";
 }
 
+.col-75 select {
+    font-family: "HelveticaNeue";
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";

@@ -113,25 +113,6 @@
       <center>
         <div class = "container">
             <form action="./homepage.html">
-              <p><strong>Category</strong></p>
-                <select id="category">
-                  <option value="Basketball">Basketball</option>
-                  <option value="Soccer">Soccer</option>
-                  <option value="Boxing">Boxing</option>
-                  <option value="Football">Football</option>
-                  <option value="Swimming">Swimming</option>
-                  <option value="OutdoorSports"> Outdoor Sports </option>
-                  <option value="GeneralSports">Other Sports</option>
-                  <option value="GeneralArt"> General Art </option>
-                  <option value="Drawing"> Drawing/Painting </option>
-                  <option value ="Film">  Photography/Film </option>
-                  <option value="Dance">Dance</option>
-                  <option value="GeneralArt"> Other Creativity </option>
-                  <option value="Hangout"> Hangout </option>
-
-                </select>
-
-
                 <div class="row">
                   <div class = "col-25">
                     <label for = "actName">Activity Name </label>
@@ -141,6 +122,29 @@
                             name = "activityname" onkeydown="limit(this, 30)" onkeyup="limit(this, 30)" required> <br>
                   </div>
                 </div>
+                  <div class="row">
+                    <div class = "col-25">
+                      <label for = "category">Category</label>
+                    </div>
+                    <div class ="col-75">
+                      <select id="category" style = "height : 40px;">
+                        <option value="Basketball">Basketball</option>
+                        <option value="Soccer">Soccer</option>
+                        <option value="Boxing">Boxing</option>
+                        <option value="Football">Football</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="OutdoorSports"> Outdoor Sports </option>
+                        <option value="GeneralSports">Other Sports</option>
+                        <option value="GeneralArt"> General Art </option>
+                        <option value="Drawing"> Drawing/Painting </option>
+                        <option value ="Film">  Photography/Film </option>
+                        <option value="Dance">Dance</option>
+                        <option value="GeneralArt"> Other Creativity </option>
+                        <option value="Hangout"> Hangout </option>
+                      </select>
+                    </div>
+                </div>
+
                 <div class="row">
                   <div class = "col-25">
                     <label for = "startTime">Start Date and Time </label>
@@ -192,7 +196,7 @@
                         <label for="description">Additional Information</label>
                       </div>
                       <div class="col-75">
-                        <textarea id="description" name="description"  style="height:200px" onkeydown="limit(this, 500)" onkeyup="limit(this, 500)" placeholder="limit to 500 chars"></textarea>
+                        <textarea id="description" name="description"  style="height:125px" onkeydown="limit(this, 500)" onkeyup="limit(this, 500)" placeholder="limit to 500 chars"></textarea>
                       </div>
                     </div>
                     <div class="row">
