@@ -1,8 +1,8 @@
 <html>
  <head>
-    <title>Create Events Page</title>
-    <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Group Up</title>
+    <link rel = "stylesheet" type = "text/css" href = "mystyle2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -82,34 +82,40 @@
     </script>
   </head>
     <body>
-      <!--  for the side menu -->
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./profile.html">My Profile</a>
-        <a href="./myposts.html">My Events</a>
-        <a href="./login.html">Logout</a>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-light" class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">GroupUp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="./homepage2.html"> Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./myposts.html"> My Events </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="./profile.html" onclick="toMyProfile()">My Profile</a>
+                <a class="dropdown-item" href="./helppage.html">Help</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./login.html">Log Out</a>
+              </div>
+            </li>
 
 
-      <div class="topnav">
+            <button class="btn btn-primary" onclick="location.href='./newpost.html'" > Create Event </button>
+          </ul>
+          </form>
 
-          <div class="search-container-new">
-
-            <!--  <form> -->
-                <span style="font-size:30px;cursor:pointer;color:white; float: left;" onclick="openNav()">&#9776;</span>
-                <!--<input type="text" placeholder="Search..." name="search">
-                <button class="btnsearch" type="submit"><i class="fa fa-search"></i></button>
-                <button formaction = "./newpost.html" value="else"> Create Event </button>
-               <button formaction = "./messages.html" value="else"> Messages </button> -->
-                <div class="pageTitle" style = ""> Create Event </div>
-        <!--        <button class="btnhome" formaction = "./homepage.html" value="else"><i class="fa fa-home"></i></button> -->
-        <button class="btnhome" onclick= "location.href='./homepage.html'"><i class="fa fa-home"></i></button>
-
-          <!--  </form> -->
-
-
-          </div>
-      </div>
+        </div>
+      </nav>
       <center>
         <div class = "container">
             <form action="./homepage.html">
@@ -208,4 +214,7 @@
           </div>
             <br />
         </center>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
