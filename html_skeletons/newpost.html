@@ -1,15 +1,18 @@
 <html>
  <head>
     <title>Group Up</title>
+
     <link rel = "stylesheet" type = "text/css" href = "mystyle2.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="dummy.css">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/moment-2.4.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
@@ -60,6 +63,8 @@
     }
 
     $(function () {
+        
+        
         $('#datetimepicker6').datetimepicker();
         $('#datetimepicker7').datetimepicker({
             useCurrent: false //Important! See issue #1075
@@ -81,9 +86,10 @@
     }
     </script>
   </head>
+
     <body>
       <nav class="navbar navbar-expand-lg navbar-light" class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="#">GroupUp</a>
+        <a class="navbar-brand" href="#">Group Up</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -91,7 +97,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="./homepage2.html"> Dashboard <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="./homepage.html"> Dashboard <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./myposts.html"> My Events </a>
@@ -110,9 +116,8 @@
             </li>
 
 
-            <button class="btn btn-primary" onclick="location.href='./newpost.html'" > Create Event </button>
+            <!--<button class="btn btn-primary" onclick="location.href='./newpost.html'" > Create Event </button>-->
           </ul>
-          </form>
 
         </div>
       </nav>
@@ -205,7 +210,7 @@
                         <textarea id="description" name="description"  style="height:125px" onkeydown="limit(this, 500)" onkeyup="limit(this, 500)" placeholder="limit to 500 chars"></textarea>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="col-50">
                       <input class = "submit" onclick="addPost()" type="submit" value="Create Event">
                       <input class = "cancel" type="button" value="Cancel" onclick="window.location = './homepage.html'">
                     </div>
@@ -214,7 +219,6 @@
           </div>
             <br />
         </center>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
 </html>
