@@ -89,6 +89,7 @@ function addNewPost(post, checkJoin) {
     numJoined = post.numJoined;
     userList = post.userList;
     creator = post.creator;
+    category = post.category;
 
     // get list of users for event
     listOfAttendees = "";
@@ -96,6 +97,48 @@ function addNewPost(post, checkJoin) {
 
       listOfAttendees += "<button type='button' class='btn btn-info' onclick='toProfile(" + "\"" + user + "\"" + ")'> "+ user + "</button>" + ' ';
     });
+
+    if(category == "Basketball") {
+      icon = "basketball.png";
+    }
+
+    if(category== "Boxing") {
+      icon = "boxing.svg";
+    }
+
+    if (category== "Football") {
+      icon = "football.svg";
+    }
+
+    if (category == "Swimming") {
+      icon = "swimming-pool.png";
+    }
+
+    if (category == "Soccer") {
+      icon = "soccer.png";
+    }
+
+    if (category == "GeneralSports") {
+      icon = "balls.png";
+    }
+    if (category == "OutdoorSports") {
+      icon = "hiking.png";
+    }
+    if(category == "GeneralArt") {
+      icon="rgb.png"
+    }
+    if(category == "Dance") {
+      icon="dance.png";
+    }
+    if(category == "Hangout") {
+      icon= "hangout.png";
+    }
+    if(category == "Film") {
+      icon="camera.png";
+    }
+    if (category == "Drawing") {
+      icon = "painting.png";
+    }
 
 
     var table = document.getElementById("posts");
@@ -133,8 +176,8 @@ function addNewPost(post, checkJoin) {
         + "<div class='modal-dialog' role='document'>"
         + "<div class='modal-content'>"
         +    "<div class='modal-header'>"
-        +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
         +      "<h5 class='modal-title'>" + actName + "</h5>"
+        +      "<button type='button' class='close' data-dismiss='modal'>&times;</button>"
         +    "</div>"
         +    "<div class='modal-body'>"
         + "<div class = 'popupInfo'>"
@@ -172,6 +215,7 @@ function addNewPost(post, checkJoin) {
       + "<div class ='eventInfo'>"
       + address + "<br/>"
       + startDate + "<br/> "
+      + "<input type= 'image' src=" + icon + " width = '60px' height= '60px'>"
       + "</div>"
       + "</button>";
 
@@ -226,63 +270,202 @@ function strcmp(a, b) {
 
 function searchResults() {
 
-  $('#posts').empty();
-  search = document.getElementById("search").value;
-  posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    $('#posts').empty();
+    search = document.getElementById("search").value;
+    posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-  num = 0;
-  posts.forEach(function(post) {
+    num = 0;
+    posts.forEach(function(post) {
 
-    if((post.actName).includes(search)) {
-      if(post.userList.includes(currUser)) {
-        addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
+      if((post.actName.toLowerCase()).includes(search.toLowerCase())) {
+          //addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+          if(post.userList.includes(localStorage.getItem("currUser"))) {
+            addNewPost(post, true);
+            num++;
+        }
       }
-      else {
-        addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, false);
-      }
-      num++;
+    });
+
+    if(num == 0) {
+      var table = document.getElementById("posts");
+      var row = table.insertRow(0);
+
+      var cell = row.insertCell(0);
+
+      cell.innerHTML = "<h3>Whoops. Your search returned no results.</h3>";
+
     }
-  });
-
-  if(num == 0) {
-    var table = document.getElementById("posts");
-    var row = table.insertRow(0);
-
-    var cell = row.insertCell(0);
-
-    cell.innerHTML = "<h3>Whoops. Your search returned no results.</h3>";
-
-  }
 
 }
 
 
 function filter(evt) {
-  $('#posts').empty();
-  posts = JSON.parse(localStorage.getItem("posts") || "[]");
+    $('#posts').empty();
+    posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-  temp_posts = posts;
+    temp_posts = posts;
 
-  if(evt.target.value === "4") {
-      temp_posts = temp_posts.sort(function(a,b) {
-          return (Number(a.numPeople) > Number(b.numPeople)) ? 1 : ((Number(a.numPeople) < Number(b.numPeople)) ? -1 : 0);
-      });
+    //emptiest
+    if(evt.target.value === "4") {
+        temp_posts = temp_posts.sort(function(a,b) {
+            return (Number(a.numPeople) > Number(b.numPeople)) ? 1 : ((Number(a.numPeople) < Number(b.numPeople)) ? -1 : 0);
+        });
 
-  }
-
-  else if(evt.target.value === "3") {
-      temp_posts = temp_posts.sort(function(a,b) {
-          return (Number(a.numPeople) < Number(b.numPeople)) ? 1 : ((Number(a.numPeople) > Number(b.numPeople)) ? -1 : 0);
-      });
-
-  }
-
-  temp_posts.forEach(function(post) {
-    if(post.userList.includes(currUser)) {
-      addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, true);
     }
-    else {
-      addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description, post.id, post.numJoined, false);
-    }  });
+
+    //fullest
+    else if(evt.target.value === "3") {
+        temp_posts = temp_posts.sort(function(a,b) {
+            return (Number(a.numPeople) < Number(b.numPeople)) ? 1 : ((Number(a.numPeople) > Number(b.numPeople)) ? -1 : 0);
+        });
+
+    }
+
+    //latest starting time
+    else if(evt.target.value === "1") {
+        temp_posts = temp_posts.sort(function(a,b) {
+
+            var dateA = (a.startTime).split(" ")[0];
+            var monthA = dateA.split("/")[0];
+            var daysA = dateA.split("/")[1];
+            var yearA = dateA.split("/")[2];
+
+
+            var timeA = (a.startTime).split(" ")[1];
+            var hoursA = timeA.split(":")[0];
+            var minutesA = timeA.split(":")[1];
+            var ampmA = (a.startTime).slice(-2);
+
+            var dateB = (b.startTime).split(" ")[0];
+            var monthB = dateB.split("/")[0];
+            var daysB = dateB.split("/")[1];
+            var yearB = dateB.split("/")[2];
+
+
+            var timeB = (b.startTime).split(" ")[1];
+            var hoursB = timeB.split(":")[0];
+            var minutesB = timeB.split(":")[1];
+            var ampmB = (b.startTime).slice(-2);
+
+            if(yearA != yearB) {
+                return yearA - yearB;
+            }
+            else if (monthA != monthB) {
+                return monthA - monthB;
+            }
+            else if (daysA != daysB) {
+                return daysA - daysB;
+            }
+
+            else if (hoursA != hoursB) {
+
+                if(ampmA == ampmB) {
+
+                  if(ampmA == "PM") {
+                      return hoursB - hoursA;
+                  }
+                  return hoursA - hoursB;
+
+                }
+
+                else {
+                    if(ampmA == "PM") {
+                        return hoursB - hoursA;
+                    }
+
+                    return hoursA - hoursB;
+                }
+            }
+
+            else if (minutesA != minutesB) {
+                return minutesA - minutesB;
+            }
+
+            else {
+                return 0;
+            }
+
+
+        });
+    }
+
+    //earliest starting time
+    else if(evt.target.value === "2") {
+        temp_posts = temp_posts.sort(function(a,b) {
+
+            var dateA = (a.startTime).split(" ")[0];
+            var monthA = dateA.split("/")[0];
+            var daysA = dateA.split("/")[1];
+            var yearA = dateA.split("/")[2];
+
+
+            var timeA = (a.startTime).split(" ")[1];
+            var hoursA = timeA.split(":")[0];
+            var minutesA = timeA.split(":")[1];
+            var ampmA = (a.startTime).slice(-2);
+
+            var dateB = (b.startTime).split(" ")[0];
+            var monthB = dateB.split("/")[0];
+            var daysB = dateB.split("/")[1];
+            var yearB = dateB.split("/")[2];
+
+
+            var timeB = (b.startTime).split(" ")[1];
+            var hoursB = timeB.split(":")[0];
+            var minutesB = timeB.split(":")[1];
+            var ampmB = (b.startTime).slice(-2);
+
+            if(yearA != yearB) {
+                return yearB - yearA;
+            }
+            else if (monthA != monthB) {
+                return monthB - monthA;
+            }
+            else if (daysA != daysB) {
+                return daysB - daysA;
+            }
+
+            else if (hoursA != hoursB) {
+
+                if(ampmA == ampmB) {
+
+                  if(ampmA == "PM") {
+                      return hoursA - hoursB;
+                  }
+                  return hoursB - hoursA;
+
+                }
+
+                else {
+                    if(ampmA == "PM") {
+                        return hoursA - hoursB;
+                    }
+
+                    return hoursB - hoursA;
+                }
+            }
+
+            else if (minutesA != minutesB) {
+                return minutesB - minutesA;
+            }
+
+            else {
+                return 0;
+            }
+
+        });
+    }
+
+    //most recent posts
+    else if(evt.target.value === "0") {
+        temp_posts.reverse();
+    }
+
+    temp_posts.forEach(function(post) {
+      if(post.userList.includes(localStorage.getItem("currUser"))) {
+        addNewPost(post, true);
+      }
+      //  addNewPost(post.actName, post.startTime, post.endTime, post.numPeople, post.address, post.description);
+    });
 
 }

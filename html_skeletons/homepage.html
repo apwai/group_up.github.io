@@ -312,7 +312,7 @@
 
         //default to most recent posts -VK
         posts.reverse();
-          
+
         if (posts.length == 0) {
             var table = document.getElementById("posts");
             var row = table.insertRow(0);
@@ -320,9 +320,9 @@
             var cell = row.insertCell(0);
 
             cell.innerHTML = "<h3>Whoops. There are currently no events.</h3>";
-            
+
             return;
-        } 
+        }
 
         posts.forEach(function(post) {
           currUser = localStorage.getItem('currUser');
@@ -335,8 +335,8 @@
             addNewPost(post, false);
           }
         });
-          
-          
+
+
       }
 
       function strcmp(a, b) {
@@ -612,7 +612,7 @@
         </label>
         <button class = "reset" onclick = "window.location.href = './homepage.html'">Clear Sort & Search</button>
       </div>
-      
+
       <h2 id=dashboardtext> Current Events </h2>
 
     <center>
