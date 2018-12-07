@@ -139,7 +139,9 @@ function addNewPost(post, checkJoin) {
     if (category == "Drawing") {
       icon = "painting.png";
     }
-
+    else {
+      icon="";
+    }
 
     var table = document.getElementById("posts");
     var length = 3;
